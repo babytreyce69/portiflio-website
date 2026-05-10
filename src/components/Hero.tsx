@@ -24,31 +24,10 @@ function OvalPortrait({ flipped = false }: { flipped?: boolean }) {
   )
 }
 
-function ChatBubble({
-  children,
-  tail,
-}: {
-  children: React.ReactNode
-  tail: 'left' | 'right'
-}) {
+function ChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className={
-        'relative inline-block bg-[#278eff] px-3 py-2 text-[12px] font-normal leading-[0.91] text-white shadow-sm ' +
-        (tail === 'right'
-          ? 'rounded-2xl rounded-br-[4px]'
-          : 'rounded-2xl rounded-bl-[4px]')
-      }
-    >
+    <div className="inline-block rounded-2xl bg-[#278eff] px-5 py-3 text-[18px] font-normal leading-tight text-white shadow-sm">
       {children}
-      {/* Tail */}
-      <span
-        aria-hidden="true"
-        className={
-          'absolute bottom-0 h-2 w-2 -mb-0.5 rotate-45 bg-[#278eff] ' +
-          (tail === 'right' ? 'right-1' : 'left-1')
-        }
-      />
     </div>
   )
 }
@@ -110,7 +89,7 @@ export default function Hero() {
               top: 'clamp(55px, 6.1vw, 93px)',
             }}
           >
-            <ChatBubble tail="right">Hi Treyce</ChatBubble>
+            <ChatBubble>Hi Treyce</ChatBubble>
           </div>
 
           {/* Chat bubble — "Oh hey Treyce" — lower, between portraits — Figma: x=1033-766=267, y=258-61=197 */}
@@ -121,7 +100,7 @@ export default function Hero() {
               top: 'clamp(120px, 13vw, 197px)',
             }}
           >
-            <ChatBubble tail="left">Oh hey Treyce</ChatBubble>
+            <ChatBubble>Oh hey Treyce</ChatBubble>
           </div>
         </div>
       </div>
