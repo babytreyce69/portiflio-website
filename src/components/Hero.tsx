@@ -35,9 +35,9 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
 export default function Hero() {
   return (
     <section className="bg-[#f2f0e6]">
-      <div className="mx-auto flex w-full max-w-[1512px] flex-col gap-12 px-6 py-16 sm:px-10 lg:flex-row lg:items-center lg:gap-12 lg:px-[215px] lg:py-[68px]">
+      <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-12 px-6 py-16 sm:px-10 lg:flex-row lg:items-center lg:gap-12 lg:px-10 lg:py-[68px]">
         {/* Left: text + button */}
-        <div className="flex flex-1 flex-col gap-4 lg:max-w-[528px]">
+        <div className="flex flex-1 flex-col gap-4 lg:max-w-[380px]">
           <h1 className="text-xl font-black leading-snug text-black lg:text-[24px] lg:leading-[1.35]">
             This is Treyce,
             <br />

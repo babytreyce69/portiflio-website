@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <section className="bg-[#f2f0e6]">
-      <div className="mx-auto w-full max-w-[1512px] px-6 py-16 sm:px-10 lg:px-[215px] lg:py-[63px]">
+      <div className="mx-auto w-full max-w-[1000px] px-6 py-16 sm:px-10 lg:px-10 lg:py-[63px]">
         {/* Section heading */}
         <div className="mb-8 flex flex-col gap-4">
           <h2 className="text-xl font-black text-black lg:text-[24px]">

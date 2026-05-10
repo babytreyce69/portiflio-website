@@ -30,7 +30,7 @@ function ProjectCard({ title, tag, imageSrc }: CardProps) {
 export default function CareerHighlights() {
   return (
     <section className="bg-[#f2f0e6]">
-      <div className="mx-auto w-full max-w-[1512px] px-6 py-14 sm:px-10 lg:px-[215px] lg:py-[110px]">
+      <div className="mx-auto w-full max-w-[1000px] px-6 py-14 sm:px-10 lg:px-10 lg:py-[110px]">
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-black text-black lg:text-[24px]">
             Career Highlights

@@ -1,6 +1,7 @@
 import Hero from './components/Hero'
 import CareerHighlights from './components/CareerHighlights'
 import About from './components/About'
+import GridOverlay from './components/GridOverlay'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Hero />
       <CareerHighlights />
       <About />
+      {import.meta.env.DEV && <GridOverlay />}
     </main>
   )
 }
