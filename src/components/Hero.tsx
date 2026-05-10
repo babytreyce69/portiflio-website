@@ -57,47 +57,47 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Right: portraits cluster with offset + chat bubbles */}
+        {/* Right: portraits cluster with offset + chat bubbles — matches Figma 675×501 */}
         <div
           className="relative shrink-0"
           style={{
-            width: 'clamp(380px, 38vw, 574px)',
+            width: 'clamp(430px, 44.6vw, 675px)',
             height: 'clamp(330px, 33vw, 501px)',
           }}
         >
-          {/* Portrait 1 (left, higher) — Figma: left=0, top=0 within 574x440 cluster */}
+          {/* Portrait 1 — Figma: (0, 0) */}
           <div className="absolute left-0 top-0">
             <OvalPortrait />
           </div>
 
-          {/* Portrait 2 (right, offset down ~76px) — Figma: left=408, top=76 */}
+          {/* Portrait 2 — Figma: (408, 76) */}
           <div
             className="absolute"
             style={{
-              left: 'clamp(200px, 21.3vw, 308px)',
-              top: 'clamp(40px, 5vw, 76px)',
+              left: 'clamp(260px, 27vw, 408px)',
+              top: 'clamp(48px, 5vw, 76px)',
             }}
           >
             <OvalPortrait flipped />
           </div>
 
-          {/* Chat bubble — "Hi Treyce" — upper-right gap, above portrait 2 */}
+          {/* Chat bubble — "Hi Treyce" — Figma: (222, 93), overlaps right edge of portrait 1 + upper gap */}
           <div
             className="absolute"
             style={{
-              left: 'clamp(170px, 18vw, 275px)',
-              top: 'clamp(20px, 2.4vw, 36px)',
+              left: 'clamp(142px, 14.7vw, 222px)',
+              top: 'clamp(60px, 6.2vw, 93px)',
             }}
           >
             <ChatBubble>Hi Treyce</ChatBubble>
           </div>
 
-          {/* Chat bubble — "Oh hey Treyce" — lower-mid gap, below portrait 1 face */}
+          {/* Chat bubble — "Oh hey Treyce" — Figma: (267, 197), sits across the gap */}
           <div
             className="absolute"
             style={{
-              left: 'clamp(150px, 16vw, 240px)',
-              top: 'clamp(185px, 19.6vw, 296px)',
+              left: 'clamp(170px, 17.7vw, 267px)',
+              top: 'clamp(125px, 13vw, 197px)',
             }}
           >
             <ChatBubble>Oh hey Treyce</ChatBubble>
