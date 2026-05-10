@@ -26,7 +26,7 @@ function OvalPortrait({ flipped = false }: { flipped?: boolean }) {
 
 function ChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-block rounded-2xl bg-[#278eff] px-5 py-3 text-[18px] font-normal leading-tight text-white shadow-sm">
+    <div className="inline-block rounded-2xl bg-[#278eff] px-3.5 py-1.5 text-[14px] font-normal leading-tight text-white shadow-sm">
       {children}
     </div>
   )
@@ -81,23 +81,23 @@ export default function Hero() {
             <OvalPortrait flipped />
           </div>
 
-          {/* Chat bubble — "Hi Treyce" — upper, between portraits — Figma: x=988-766=222, y=154-61=93 */}
+          {/* Chat bubble — "Hi Treyce" — upper-right gap, above portrait 2 */}
           <div
             className="absolute"
             style={{
-              left: 'clamp(135px, 14.7vw, 222px)',
-              top: 'clamp(55px, 6.1vw, 93px)',
+              left: 'clamp(170px, 18vw, 275px)',
+              top: 'clamp(20px, 2.4vw, 36px)',
             }}
           >
             <ChatBubble>Hi Treyce</ChatBubble>
           </div>
 
-          {/* Chat bubble — "Oh hey Treyce" — lower, between portraits — Figma: x=1033-766=267, y=258-61=197 */}
+          {/* Chat bubble — "Oh hey Treyce" — lower-mid gap, below portrait 1 face */}
           <div
             className="absolute"
             style={{
-              left: 'clamp(160px, 17.7vw, 267px)',
-              top: 'clamp(120px, 13vw, 197px)',
+              left: 'clamp(150px, 16vw, 240px)',
+              top: 'clamp(185px, 19.6vw, 296px)',
             }}
           >
             <ChatBubble>Oh hey Treyce</ChatBubble>
