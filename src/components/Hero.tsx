@@ -35,6 +35,20 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
   )
 }
 
+/** Kinetic type on hover — letters jitter / spin like “professional” on joel.tools */
+function EnergyWord() {
+  const letters = 'energy'.split('')
+  return (
+    <span className="energy-word" aria-label="energy">
+      {letters.map((ch, i) => (
+        <span key={i} className="energy-letter">
+          {ch}
+        </span>
+      ))}
+    </span>
+  )
+}
+
 export default function Hero() {
   return (
     <section className="bg-[#f2f0e6]">
@@ -45,7 +59,7 @@ export default function Hero() {
           <h1 className="text-[24px] font-black leading-snug text-black">
             This is Treyce,{' '}
             He is a Growth Designer with an endless amount of{' '}
-            <span className="energy-word">energy</span> and enthusiasm
+            <EnergyWord /> and enthusiasm
           </h1>
           <p className="text-[16px] font-semibold text-black">
             Currently Designing at Mercury
