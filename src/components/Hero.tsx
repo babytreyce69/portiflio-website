@@ -65,7 +65,7 @@ function HoverWord({
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen items-center bg-[#f2f0e6]">
+    <section className="bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8 px-6 py-10 sm:px-10 lg:flex-row lg:items-center lg:gap-6 lg:px-10 lg:py-[40px]">
 
         {/* Left: grows to fill row so portraits align with right margin / career cards */}

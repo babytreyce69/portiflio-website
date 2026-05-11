@@ -30,7 +30,7 @@ export default function CareerHighlights() {
   ]
 
   return (
-    <section className="flex min-h-screen items-center bg-[#f2f0e6]">
+    <section className="bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto w-full max-w-[1000px] px-6 py-10 sm:px-10 lg:px-10 lg:py-[60px]">
 
         {/* Header row */}
