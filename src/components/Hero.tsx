@@ -36,18 +36,37 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
 }
 
 /**
- * Wraps each letter so animate.css animations can run per-letter with a stagger.
- * Swap the animation by overriding the `--energy-anim` CSS var on the parent.
+ * Wraps each letter so an animate.css animation can run per-letter with a stagger.
+ * Pick any animate.css animation name (e.g. bounce, tada, heartBeat, jello).
  */
-function EnergyWord() {
-  const letters = 'energy'.split('')
+function HoverWord({
+  text,
+  animation,
+  duration = '0.6s',
+  stagger = 0.06,
+}: {
+  text: string
+  animation: string
+  duration?: string
+  stagger?: number
+}) {
+  const letters = text.split('')
   return (
-    <span className="energy-word" aria-label="energy">
+    <span
+      className="hover-word"
+      aria-label={text}
+      style={
+        {
+          '--hover-anim': animation,
+          '--hover-duration': duration,
+        } as React.CSSProperties
+      }
+    >
       {letters.map((ch, i) => (
         <span
           key={i}
-          className="energy-letter"
-          style={{ animationDelay: `${i * 0.06}s` }}
+          className="hover-letter"
+          style={{ animationDelay: `${i * stagger}s` }}
         >
           {ch}
         </span>
@@ -66,7 +85,8 @@ export default function Hero() {
           <h1 className="text-[24px] font-black leading-snug text-black">
             This is Treyce,{' '}
             He is a Growth Designer with an endless amount of{' '}
-            <EnergyWord /> and enthusiasm
+            <HoverWord text="energy" animation="tada" duration="0.7s" /> and{' '}
+            <HoverWord text="enthusiasm" animation="heartBeat" duration="1s" stagger={0.05} />
           </h1>
           <p className="text-[16px] font-semibold text-black">
             Currently Designing at Mercury

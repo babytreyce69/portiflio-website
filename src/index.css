@@ -29,13 +29,14 @@ body {
 }
 
 /*
- * Hero — "energy" hover uses animate.css keyframes (https://animate.style/).
- * Swap --energy-anim to any animate.css animation name, e.g. bounce, tada,
- * rubberBand, jello, swing, wobble, headShake, pulse, heartBeat, flash.
+ * Hover-on-a-word kinetic type powered by animate.css keyframes
+ * (https://animate.style/). Each word sets its own animation via
+ * --hover-anim, e.g. bounce, tada, rubberBand, jello, swing, wobble,
+ * headShake, pulse, heartBeat, flash.
  */
-.energy-word {
-  --energy-anim: bounce;
-  --energy-duration: 0.6s;
+.hover-word {
+  --hover-anim: bounce;
+  --hover-duration: 0.6s;
   cursor: default;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -45,16 +46,16 @@ body {
   vertical-align: baseline;
 }
 
-.energy-word .energy-letter {
+.hover-word .hover-letter {
   display: inline-block;
   transform-origin: 50% 100%;
   backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .energy-word:hover .energy-letter {
-    animation-name: var(--energy-anim);
-    animation-duration: var(--energy-duration);
+  .hover-word:hover .hover-letter {
+    animation-name: var(--hover-anim);
+    animation-duration: var(--hover-duration);
     animation-timing-function: ease-in-out;
     animation-fill-mode: both;
     animation-iteration-count: 1;
