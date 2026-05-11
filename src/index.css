@@ -44,22 +44,50 @@ body {
   backface-visibility: hidden;
 }
 
-/* Tight timeline + extra keyframe samples = fast but fluid arch */
+/* Dense keyframes ≈ smooth ease curve; short duration = snappy + fluid */
 @keyframes energy-arch-wave {
   0% {
     transform: translate3d(var(--energy-ax), 0, 0);
   }
-  7% {
+  4% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.04),
+      calc(var(--energy-ay) * 0.02),
+      0
+    );
+  }
+  8% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.06),
+      0
+    );
+  }
+  12% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.12),
       0
     );
   }
   16% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.22),
+      calc(var(--energy-ay) * 0.2),
+      0
+    );
+  }
+  20% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.3),
+      0
+    );
+  }
+  24% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.41),
       0
     );
   }
@@ -70,49 +98,118 @@ body {
       0
     );
   }
-  38% {
+  32% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.78),
+      calc(var(--energy-ay) * 0.62),
       0
     );
   }
-  45% {
+  36% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.94),
+      calc(var(--energy-ay) * 0.72),
       0
     );
   }
-  49%,
-  52% {
+  40% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.81),
+      0
+    );
+  }
+  44% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.89),
+      0
+    );
+  }
+  47% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.95),
+      0
+    );
+  }
+  49.5% {
     transform: translate3d(var(--energy-ax), var(--energy-ay), 0);
   }
-  58% {
+  52% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.78),
+      calc(var(--energy-ay) * 0.96),
+      0
+    );
+  }
+  55% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.88),
+      0
+    );
+  }
+  59% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.76),
+      0
+    );
+  }
+  63% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.64),
       0
     );
   }
   68% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.52),
+      calc(var(--energy-ay) * 0.5),
       0
     );
   }
-  80% {
+  73% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.37),
+      0
+    );
+  }
+  78% {
     transform: translate3d(
       var(--energy-ax),
       calc(var(--energy-ay) * 0.26),
       0
     );
   }
-  91% {
+  83% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.07),
+      calc(var(--energy-ay) * 0.16),
+      0
+    );
+  }
+  88% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.09),
+      0
+    );
+  }
+  93% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.04),
+      0
+    );
+  }
+  97% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.01),
       0
     );
   }
@@ -123,6 +220,6 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .energy-word:hover .energy-letter {
-    animation: energy-arch-wave 0.48s cubic-bezier(0.33, 0, 0.25, 1) 1;
+    animation: energy-arch-wave 0.3s cubic-bezier(0.4, 0, 0.2, 1) 1;
   }
 }
