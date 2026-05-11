@@ -26,3 +26,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+/* Hero: hover shimmer on key words (e.g. “Energy”) */
+@keyframes energy-word-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+.energy-word {
+  cursor: default;
+  border-radius: 2px;
+  padding: 0 0.06em;
+  margin: 0 -0.06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .energy-word:hover {
+    color: transparent;
+    background-image: linear-gradient(
+      105deg,
+      #111 0%,
+      #111 22%,
+      #1565c0 40%,
+      #4ecbff 50%,
+      #1565c0 60%,
+      #111 78%,
+      #111 100%
+    );
+    background-size: 220% 100%;
+    background-position: 100% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: energy-word-shimmer 1.35s ease-in-out infinite;
+  }
+}

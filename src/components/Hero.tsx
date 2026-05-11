@@ -44,7 +44,8 @@ export default function Hero() {
         <div className="flex min-w-0 flex-1 flex-col gap-3 lg:pr-2">
           <h1 className="text-[24px] font-black leading-snug text-black">
             This is Treyce,{' '}
-            He is a Growth Designer with an endless amount of energy and enthusiasm
+            He is a Growth Designer with an endless amount of{' '}
+            <span className="energy-word">energy</span> and enthusiasm
           </h1>
           <p className="text-[16px] font-semibold text-black">
             Currently Designing at Mercury
