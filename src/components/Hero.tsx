@@ -38,10 +38,10 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
 export default function Hero() {
   return (
     <section className="bg-[#f2f0e6]">
-      <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8 px-6 py-10 sm:px-10 lg:flex-row lg:items-center lg:gap-8 lg:px-10 lg:py-[40px]">
+      <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8 px-6 py-10 sm:px-10 lg:flex-row lg:items-center lg:gap-6 lg:px-10 lg:py-[40px]">
 
-        {/* Left: text + button */}
-        <div className="flex flex-1 flex-col gap-3 lg:max-w-[350px]">
+        {/* Left: grows to fill row so portraits align with right margin / career cards */}
+        <div className="flex min-w-0 flex-1 flex-col gap-3 lg:pr-2">
           <h1 className="text-[24px] font-black leading-snug text-black">
             This is Treyce,{' '}
             He is a Growth Designer with an endless amount of energy and enthusiasm
