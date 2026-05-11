@@ -64,8 +64,8 @@ export default function Hero() {
           className="relative shrink-0"
           style={{ width: 447, height: 291 }}
         >
-          {/* Portrait 1 — (0, 0) */}
-          <div className="absolute left-0 top-0">
+          {/* Portrait 1 */}
+          <div className="absolute left-4 top-0">
             <OvalPortrait />
           </div>
 
@@ -75,7 +75,7 @@ export default function Hero() {
           </div>
 
           {/* "Hi Treyce" — overlaps portrait 1 right edge, stays above face */}
-          <div className="absolute z-10" style={{ left: 128, top: 38 }}>
+          <div className="absolute z-10" style={{ left: 144, top: 38 }}>
             <ChatBubble>Hi Treyce</ChatBubble>
           </div>
 
