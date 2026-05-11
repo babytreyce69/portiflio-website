@@ -29,7 +29,7 @@ function OvalPortrait({ flipped = false }: { flipped?: boolean }) {
 
 function ChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-block rounded-2xl bg-[#278eff] px-3 py-1.5 text-[12px] font-normal leading-tight text-white shadow-sm">
+    <div className="inline-block rounded-2xl bg-[#278eff] px-4 py-2 text-[15px] font-normal leading-tight text-white shadow-sm">
       {children}
     </div>
   )
@@ -74,13 +74,13 @@ export default function Hero() {
             <OvalPortrait flipped />
           </div>
 
-          {/* "Hi Treyce" — Figma (222, 93) scaled to (147, 62) */}
-          <div className="absolute" style={{ left: 147, top: 62 }}>
+          {/* "Hi Treyce" — overlaps portrait 1 right edge, stays above face */}
+          <div className="absolute z-10" style={{ left: 112, top: 38 }}>
             <ChatBubble>Hi Treyce</ChatBubble>
           </div>
 
-          {/* "Oh hey Treyce" — Figma (267, 197) scaled to (177, 130) */}
-          <div className="absolute" style={{ left: 177, top: 130 }}>
+          {/* "Oh hey Treyce" — overlaps portrait 2 left edge, sits below face */}
+          <div className="absolute z-10" style={{ left: 228, top: 196 }}>
             <ChatBubble>Oh hey Treyce</ChatBubble>
           </div>
         </div>
