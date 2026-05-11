@@ -36,25 +36,21 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
 }
 
 /**
- * Wraps each letter so an animate.css animation can run per-letter with a stagger.
+ * Plays an animate.css animation on the whole word when hovered.
  * Pick any animate.css animation name (e.g. bounce, tada, heartBeat, jello).
  */
 function HoverWord({
   text,
   animation,
   duration = '0.6s',
-  stagger = 0.06,
 }: {
   text: string
   animation: string
   duration?: string
-  stagger?: number
 }) {
-  const letters = text.split('')
   return (
     <span
       className="hover-word"
-      aria-label={text}
       style={
         {
           '--hover-anim': animation,
@@ -62,15 +58,7 @@ function HoverWord({
         } as React.CSSProperties
       }
     >
-      {letters.map((ch, i) => (
-        <span
-          key={i}
-          className="hover-letter"
-          style={{ animationDelay: `${i * stagger}s` }}
-        >
-          {ch}
-        </span>
-      ))}
+      {text}
     </span>
   )
 }
@@ -86,7 +74,7 @@ export default function Hero() {
             This is Treyce,{' '}
             He is a Growth Designer with an endless amount of{' '}
             <HoverWord text="energy" animation="heartBeat" duration="1s" /> and{' '}
-            <HoverWord text="enthusiasm" animation="heartBeat" duration="1s" stagger={0.05} />
+            <HoverWord text="enthusiasm" animation="heartBeat" duration="1s" />
           </h1>
           <p className="text-[16px] font-semibold text-black">
             Currently Designing at Mercury
