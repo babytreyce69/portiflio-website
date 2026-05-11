@@ -1,21 +1,24 @@
+import React from 'react'
+
 function OvalPortrait({ flipped = false }: { flipped?: boolean }) {
+  const base = import.meta.env.BASE_URL
   return (
     <div
-      className="relative shrink-0 overflow-hidden rounded-[267.5px] border-4 border-[#8e8e93] bg-white"
+      className="relative shrink-0 overflow-hidden rounded-[200px] border-[3px] border-[#8e8e93] bg-white"
       style={{
-        width: 'clamp(180px, 17.7vw, 267px)',
-        height: 'clamp(245px, 24vw, 364px)',
+        width: 177,
+        height: 241,
         transform: flipped ? 'scaleX(-1)' : undefined,
       }}
     >
       <img
-        src="/assets/treyce-bg.png"
+        src={`${base}assets/treyce-bg.png`}
         alt=""
         aria-hidden="true"
         className="absolute left-[-64.81%] top-[-19.95%] h-[112.59%] w-[230.25%] max-w-none object-cover"
       />
       <img
-        src="/assets/treyce-portrait.png"
+        src={`${base}assets/treyce-portrait.png`}
         alt={flipped ? '' : 'Treyce Meredith'}
         aria-hidden={flipped}
         className="absolute inset-0 top-[-1.59%] h-[110.03%] w-full max-w-none object-cover"
@@ -26,7 +29,7 @@ function OvalPortrait({ flipped = false }: { flipped?: boolean }) {
 
 function ChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-block rounded-2xl bg-[#278eff] px-3.5 py-1.5 text-[14px] font-normal leading-tight text-white shadow-sm">
+    <div className="inline-block rounded-2xl bg-[#278eff] px-3 py-1.5 text-[12px] font-normal leading-tight text-white shadow-sm">
       {children}
     </div>
   )
@@ -35,71 +38,49 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
 export default function Hero() {
   return (
     <section className="bg-[#f2f0e6]">
-      <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-12 px-6 py-16 sm:px-10 lg:flex-row lg:items-center lg:gap-12 lg:px-10 lg:py-[68px]">
+      <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8 px-6 py-10 sm:px-10 lg:flex-row lg:items-center lg:gap-8 lg:px-10 lg:py-[40px]">
+
         {/* Left: text + button */}
-        <div className="flex flex-1 flex-col gap-4 lg:max-w-[380px]">
-          <h1 className="text-xl font-black leading-snug text-black lg:text-[24px] lg:leading-[1.35]">
-            This is Treyce,
-            <br />
-            He is a Growth Designer with an endless amount of energy and
-            enthusiasm
+        <div className="flex flex-1 flex-col gap-3 lg:max-w-[350px]">
+          <h1 className="text-[24px] font-black leading-snug text-black">
+            This is Treyce,{' '}
+            He is a Growth Designer with an endless amount of energy and enthusiasm
           </h1>
-          <p className="text-sm font-semibold text-black lg:text-[16px]">
+          <p className="text-[16px] font-semibold text-black">
             Currently Designing at Mercury
           </p>
           <a
             href="https://www.linkedin.com"
             target="_blank"
             rel="noreferrer"
-            className="mt-2 inline-flex w-fit items-center justify-center rounded-xl border border-black px-4 py-4 text-xs font-semibold text-black transition hover:bg-black hover:text-white"
+            className="mt-1 inline-flex w-fit items-center justify-center rounded-xl border border-black px-4 py-3 text-[12px] font-semibold text-black transition hover:bg-black hover:text-white"
           >
             Fun button
           </a>
         </div>
 
-        {/* Right: portraits cluster with offset + chat bubbles — matches Figma 675×501 */}
+        {/* Right: portrait cluster — 447px wide × 291px tall (scaled from 675×440) */}
         <div
           className="relative shrink-0"
-          style={{
-            width: 'clamp(430px, 44.6vw, 675px)',
-            height: 'clamp(330px, 33vw, 501px)',
-          }}
+          style={{ width: 447, height: 291 }}
         >
-          {/* Portrait 1 — Figma: (0, 0) */}
+          {/* Portrait 1 — (0, 0) */}
           <div className="absolute left-0 top-0">
             <OvalPortrait />
           </div>
 
-          {/* Portrait 2 — Figma: (408, 76) */}
-          <div
-            className="absolute"
-            style={{
-              left: 'clamp(260px, 27vw, 408px)',
-              top: 'clamp(48px, 5vw, 76px)',
-            }}
-          >
+          {/* Portrait 2 — (+270px right, +50px down) */}
+          <div className="absolute" style={{ left: 270, top: 50 }}>
             <OvalPortrait flipped />
           </div>
 
-          {/* Chat bubble — "Hi Treyce" — Figma: (222, 93), overlaps right edge of portrait 1 + upper gap */}
-          <div
-            className="absolute"
-            style={{
-              left: 'clamp(142px, 14.7vw, 222px)',
-              top: 'clamp(60px, 6.2vw, 93px)',
-            }}
-          >
+          {/* "Hi Treyce" — Figma (222, 93) scaled to (147, 62) */}
+          <div className="absolute" style={{ left: 147, top: 62 }}>
             <ChatBubble>Hi Treyce</ChatBubble>
           </div>
 
-          {/* Chat bubble — "Oh hey Treyce" — Figma: (267, 197), sits across the gap */}
-          <div
-            className="absolute"
-            style={{
-              left: 'clamp(170px, 17.7vw, 267px)',
-              top: 'clamp(125px, 13vw, 197px)',
-            }}
-          >
+          {/* "Oh hey Treyce" — Figma (267, 197) scaled to (177, 130) */}
+          <div className="absolute" style={{ left: 177, top: 130 }}>
             <ChatBubble>Oh hey Treyce</ChatBubble>
           </div>
         </div>
