@@ -35,16 +35,38 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
   )
 }
 
-/** Kinetic type on hover — letters jitter / spin like “professional” on joel.tools */
+/** Arch wave: each letter has a peak height + slight horizontal offset; staggered delay sweeps along the word */
+const ENERGY_ARCH: ReadonlyArray<{ ax: number; ay: number }> = [
+  { ax: -5, ay: -8 },
+  { ax: -2.5, ay: -12 },
+  { ax: -1, ay: -15 },
+  { ax: 0, ay: -17 },
+  { ax: 1.5, ay: -15 },
+  { ax: 5, ay: -9 },
+]
+
 function EnergyWord() {
   const letters = 'energy'.split('')
   return (
     <span className="energy-word" aria-label="energy">
-      {letters.map((ch, i) => (
-        <span key={i} className="energy-letter">
-          {ch}
-        </span>
-      ))}
+      {letters.map((ch, i) => {
+        const { ax, ay } = ENERGY_ARCH[i]!
+        return (
+          <span
+            key={i}
+            className="energy-letter"
+            style={
+              {
+                '--energy-ax': `${ax}px`,
+                '--energy-ay': `${ay}px`,
+                animationDelay: `${i * 0.065}s`,
+              } as React.CSSProperties
+            }
+          >
+            {ch}
+          </span>
+        )
+      })}
     </span>
   )
 }
