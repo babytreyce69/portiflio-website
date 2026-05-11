@@ -35,39 +35,23 @@ function ChatBubble({ children }: { children: React.ReactNode }) {
   )
 }
 
-/** Arch wave: per-letter peak height, horizontal offset, and small alternating rotation; staggered delay sweeps along the word */
-const ENERGY_ARCH: ReadonlyArray<{ ax: number; ay: number; rot: number }> = [
-  { ax: -5, ay: -8, rot: -6 },
-  { ax: -2.5, ay: -12, rot: 5 },
-  { ax: -1, ay: -15, rot: -7 },
-  { ax: 0, ay: -17, rot: 6 },
-  { ax: 1.5, ay: -15, rot: -5 },
-  { ax: 5, ay: -9, rot: 7 },
-]
-
+/**
+ * Wraps each letter so animate.css animations can run per-letter with a stagger.
+ * Swap the animation by overriding the `--energy-anim` CSS var on the parent.
+ */
 function EnergyWord() {
   const letters = 'energy'.split('')
   return (
     <span className="energy-word" aria-label="energy">
-      {letters.map((ch, i) => {
-        const { ax, ay, rot } = ENERGY_ARCH[i]!
-        return (
-          <span
-            key={i}
-            className="energy-letter"
-            style={
-              {
-                '--energy-ax': `${ax}px`,
-                '--energy-ay': `${ay}px`,
-                '--energy-rot': `${rot}deg`,
-                animationDelay: `${i * 0.018}s`,
-              } as React.CSSProperties
-            }
-          >
-            {ch}
-          </span>
-        )
-      })}
+      {letters.map((ch, i) => (
+        <span
+          key={i}
+          className="energy-letter"
+          style={{ animationDelay: `${i * 0.06}s` }}
+        >
+          {ch}
+        </span>
+      ))}
     </span>
   )
 }

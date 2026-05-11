@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'animate.css';
 
 @theme {
   --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
@@ -27,8 +28,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Hero: “energy” — staggered arch wave on hover (letters rise along a curve, left → right) */
+/*
+ * Hero — "energy" hover uses animate.css keyframes (https://animate.style/).
+ * Swap --energy-anim to any animate.css animation name, e.g. bounce, tada,
+ * rubberBand, jello, swing, wobble, headShake, pulse, heartBeat, flash.
+ */
 .energy-word {
+  --energy-anim: bounce;
+  --energy-duration: 0.6s;
   cursor: default;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -44,110 +51,12 @@ body {
   backface-visibility: hidden;
 }
 
-/*
- * Joel-style hop:
- *   • Quick rise, light pop + rotate at the peak (--energy-rot)
- *   • Spring settle (overshoot a tiny bounce, then home)
- *   • Dense samples so the curve reads smooth at short durations
- */
-@keyframes energy-arch-wave {
-  0% {
-    transform: translate3d(var(--energy-ax), 0, 0) rotate(0deg) scale(1);
-  }
-  10% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.18),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.2))
-      scale(1.015);
-  }
-  20% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.42),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.45))
-      scale(1.035);
-  }
-  30% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.68),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.7))
-      scale(1.055);
-  }
-  40% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.88),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.9))
-      scale(1.075);
-  }
-  48% {
-    transform: translate3d(var(--energy-ax), var(--energy-ay), 0)
-      rotate(var(--energy-rot))
-      scale(1.085);
-  }
-  56% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.85),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.7))
-      scale(1.06);
-  }
-  66% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.58),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.4))
-      scale(1.035);
-  }
-  76% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.3),
-        0
-      )
-      rotate(calc(var(--energy-rot) * 0.15))
-      scale(1.015);
-  }
-  85% {
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * 0.08),
-        0
-      )
-      rotate(0deg)
-      scale(1.005);
-  }
-  92% {
-    /* tiny spring overshoot below baseline */
-    transform: translate3d(
-        var(--energy-ax),
-        calc(var(--energy-ay) * -0.05),
-        0
-      )
-      rotate(0deg)
-      scale(0.995);
-  }
-  100% {
-    transform: translate3d(var(--energy-ax), 0, 0) rotate(0deg) scale(1);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .energy-word:hover .energy-letter {
-    animation: energy-arch-wave 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) 1;
+    animation-name: var(--energy-anim);
+    animation-duration: var(--energy-duration);
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
   }
 }
