@@ -71,6 +71,6 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .energy-word:hover .energy-letter {
-    animation: energy-arch-wave 1.15s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+    animation: energy-arch-wave 0.575s cubic-bezier(0.45, 0, 0.25, 1) 1;
   }
 }

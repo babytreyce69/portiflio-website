@@ -59,7 +59,7 @@ function EnergyWord() {
               {
                 '--energy-ax': `${ax}px`,
                 '--energy-ay': `${ay}px`,
-                animationDelay: `${i * 0.065}s`,
+                animationDelay: `${i * 0.0325}s`,
               } as React.CSSProperties
             }
           >
