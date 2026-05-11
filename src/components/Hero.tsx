@@ -85,7 +85,7 @@ export default function Hero() {
           <h1 className="text-[24px] font-black leading-snug text-black">
             This is Treyce,{' '}
             He is a Growth Designer with an endless amount of{' '}
-            <HoverWord text="energy" animation="tada" duration="0.7s" /> and{' '}
+            <HoverWord text="energy" animation="heartBeat" duration="1s" /> and{' '}
             <HoverWord text="enthusiasm" animation="heartBeat" duration="1s" stagger={0.05} />
           </h1>
           <p className="text-[16px] font-semibold text-black">
