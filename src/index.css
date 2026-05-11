@@ -41,36 +41,67 @@ body {
 .energy-word .energy-letter {
   display: inline-block;
   transform-origin: 50% 100%;
+  backface-visibility: hidden;
 }
 
-/* Each letter rides up to its arch offset (--energy-ax / --energy-ay) then returns; delays stagger the wave */
+/* Smooth arch: gradual ease up, soft crest, gradual ease down (stagger still comes from per-letter delay) */
 @keyframes energy-arch-wave {
-  0%,
-  100% {
+  0% {
     transform: translate3d(var(--energy-ax), 0, 0);
   }
-  22% {
+  10% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.45),
+      calc(var(--energy-ay) * 0.08),
       0
     );
   }
-  40%,
-  52% {
+  26% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.52),
+      0
+    );
+  }
+  40% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.88),
+      0
+    );
+  }
+  48%,
+  54% {
     transform: translate3d(var(--energy-ax), var(--energy-ay), 0);
   }
-  72% {
+  64% {
     transform: translate3d(
       var(--energy-ax),
-      calc(var(--energy-ay) * 0.35),
+      calc(var(--energy-ay) * 0.62),
       0
     );
+  }
+  78% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.28),
+      0
+    );
+  }
+  92% {
+    transform: translate3d(
+      var(--energy-ax),
+      calc(var(--energy-ay) * 0.06),
+      0
+    );
+  }
+  100% {
+    transform: translate3d(var(--energy-ax), 0, 0);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .energy-word:hover .energy-letter {
-    animation: energy-arch-wave 0.575s cubic-bezier(0.45, 0, 0.25, 1) 1;
+    animation: energy-arch-wave 0.72s cubic-bezier(0.45, 0.05, 0.2, 1) 1;
   }
 }
