@@ -1,3 +1,21 @@
+const BEIGE = '#f2f0e6'
+const R = 154.5
+const CY = 160
+const CX_LEFT = 154.5
+const CX_RIGHT = 305.5
+const MID_X = (CX_LEFT + CX_RIGHT) / 2
+const LENS_HALF_HEIGHT = Math.sqrt(R * R - ((CX_RIGHT - CX_LEFT) / 2) ** 2)
+const LENS_TOP = CY - LENS_HALF_HEIGHT
+const LENS_BOTTOM = CY + LENS_HALF_HEIGHT
+
+/** Intersection of two equal circles — beige fill in the overlap */
+const lensPath = [
+  `M ${MID_X} ${LENS_TOP}`,
+  `A ${R} ${R} 0 0 1 ${MID_X} ${LENS_BOTTOM}`,
+  `A ${R} ${R} 0 0 1 ${MID_X} ${LENS_TOP}`,
+  'Z',
+].join(' ')
+
 export default function GrowthDesigner() {
   return (
     <section className="snap-section bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
@@ -17,29 +35,48 @@ export default function GrowthDesigner() {
           style={{ width: 460, height: 320 }}
           aria-hidden="true"
         >
-          {/* Left circle — Design */}
-          <div
-            className="absolute left-0 top-1/2 h-[309px] w-[309px] -translate-y-1/2 rounded-full border-2 border-black/15 bg-white"
-          />
-          <span className="absolute left-[86px] top-[144px] text-[16px] font-semibold text-black">
+          <svg
+            width="460"
+            height="320"
+            viewBox="0 0 460 320"
+            className="absolute inset-0"
+            fill="none"
+          >
+            <circle
+              cx={CX_LEFT}
+              cy={CY}
+              r={R}
+              fill="white"
+              stroke="black"
+              strokeWidth={2}
+            />
+            <circle
+              cx={CX_RIGHT}
+              cy={CY}
+              r={R}
+              fill="white"
+              stroke="black"
+              strokeWidth={2}
+            />
+            <path d={lensPath} fill={BEIGE} />
+          </svg>
+
+          <span className="absolute left-[86px] top-[144px] z-10 text-[16px] font-semibold text-black">
             Design
           </span>
-
-          {/* Right circle — Growth */}
-          <div
-            className="absolute right-0 top-1/2 h-[309px] w-[309px] -translate-y-1/2 rounded-full border-2 border-black/15 bg-[#f2f0e6]"
-          />
-          <span className="absolute right-[70px] top-[144px] text-[16px] font-semibold text-black">
+          <span className="absolute right-[70px] top-[144px] z-10 text-[16px] font-semibold text-black">
             Growth
           </span>
 
-          {/* Center overlap / Me */}
-          <span className="absolute left-1/2 top-[128px] -translate-x-1/2 text-[48px] leading-none">
-            👨‍🦰
-          </span>
-          <span className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[16px] font-semibold text-black">
-            Me
-          </span>
+          <div
+            className="absolute left-1/2 z-10 flex flex-col items-center gap-0"
+            style={{ top: CY, transform: 'translate(-50%, -50%)' }}
+          >
+            <span className="text-[48px] leading-none">👨‍🦰</span>
+            <span className="-mt-1 text-[16px] font-semibold leading-tight text-black">
+              Me
+            </span>
+          </div>
         </div>
       </div>
     </section>
