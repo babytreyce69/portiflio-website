@@ -28,7 +28,7 @@ export default function CareerHighlights() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
           <div className="card w-full p-6 lg:max-w-[460px] lg:shrink-0">
             <Pill onCard={true}>Treyce has grown these businesses</Pill>
-            <ul className="mt-6 flex flex-col">
+            <ul className="mt-2 flex flex-col">
               {businesses.map((name, i) => (
                 <li
                   key={name}
@@ -55,7 +55,7 @@ export default function CareerHighlights() {
                   href="https://www.youtube.com/watch?v=3aH--S3r9n4"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-2"
+                  className="mt-4"
                 >
                   Watch his talk
                 </PillLink>
