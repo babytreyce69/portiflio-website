@@ -75,7 +75,7 @@ export default function CareerHighlights() {
                 <Tag>He spoke at</Tag>
                 <p className="mt-4 text-[16px] font-semibold text-black">Config 2022</p>
                 <a
-                  href="https://www.linkedin.com"
+                  href="https://www.youtube.com/watch?v=3aH--S3r9n4"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-2 inline-block text-[14px] font-semibold text-black underline"
