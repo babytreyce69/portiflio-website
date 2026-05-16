@@ -24,14 +24,14 @@ function ProjectCard({
   return (
     <article className="card overflow-hidden">
       <div className="flex flex-col lg:flex-row lg:min-h-[444px]">
-        <div className="flex flex-col justify-center gap-4 p-8 lg:w-[55%] lg:p-12">
-          <Pill>
+        <div className="flex flex-col justify-center p-6 lg:w-[55%]">
+          <Pill onCard={true}>
             {tagIcon}
             {tag}
           </Pill>
-          <h3 className="headline">{title}</h3>
-          <p className="body-copy">{description}</p>
-          <Button className="mt-1" onClick={() => onLearnMore(caseStudyId)}>
+          <h3 className="headline mt-2">{title}</h3>
+          <p className="body-copy mt-2">{description}</p>
+          <Button className="mt-6" onClick={() => onLearnMore(caseStudyId)}>
             Learn more
           </Button>
         </div>
