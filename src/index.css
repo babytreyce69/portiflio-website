@@ -4,12 +4,109 @@
 @theme {
   --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #140018;
-  --color-forest: #033017;
-  --color-card: #21452d;
-  --color-cream: #f2f0e6;
+  /* Style sheet tokens (Figma node 54-1510) */
+  --color-canvas: #f5f3e7;
+  --color-ink: #000000;
+  --color-surface: #ffffff;
   --color-placeholder: #d9d9d9;
   --color-placeholder-dark: #b4b4b4;
+
+  --radius-pill: 8px;
+  --radius-button: 8px;
+  --radius-card: 12px;
+}
+
+/*
+ * Named styles — use these class names when requesting changes:
+ * headline | body-copy | pill | button | card | canvas
+ */
+@layer components {
+  .canvas {
+    background-color: var(--color-canvas);
+  }
+
+  .headline {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.375;
+    color: var(--color-ink);
+  }
+
+  .body-copy {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.375;
+    color: var(--color-ink);
+  }
+
+  .pill {
+    display: inline-flex;
+    width: fit-content;
+    align-self: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-surface);
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-ink);
+    cursor: default;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .pill:hover {
+    border-color: rgb(0 0 0 / 0.45);
+    background-color: var(--color-canvas);
+  }
+
+  .button {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-button);
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-surface);
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .button:hover {
+    background-color: var(--color-ink);
+    color: var(--color-surface);
+  }
+
+  .card {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-surface);
+  }
+
+  .link {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.375;
+    color: var(--color-ink);
+    text-decoration: underline;
+  }
+
+  .link:hover {
+    text-decoration-thickness: 2px;
+  }
 }
 
 html,
@@ -18,7 +115,7 @@ body,
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: #fff;
+  background: var(--color-canvas);
 }
 
 body {
@@ -28,10 +125,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/*
- * Desktop (lg+): one scroll gesture = one section (Neon-style snap).
- * Snap on the document scroll — avoids trapping overflow on body (blank page bug).
- */
 @media (min-width: 1024px) {
   html {
     scroll-snap-type: y mandatory;
@@ -96,12 +189,6 @@ html.modal-open {
   }
 }
 
-/*
- * Hover-on-a-word kinetic type powered by animate.css keyframes
- * (https://animate.style/). Each word sets its own animation via
- * --hover-anim, e.g. bounce, tada, rubberBand, jello, swing, wobble,
- * headShake, pulse, heartBeat, flash.
- */
 .hover-word {
   --hover-anim: bounce;
   --hover-duration: 0.6s;

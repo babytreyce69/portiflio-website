@@ -37,16 +37,14 @@ function ChatBubble({ children }: { children: ReactNode }) {
 
 export default function Hero() {
   return (
-    <section className="snap-section bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
+    <section className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8 px-6 py-10 sm:px-10 lg:flex-row lg:items-start lg:gap-6 lg:px-10 lg:py-[40px]">
         <div className="flex min-w-0 flex-1 flex-col gap-4 lg:max-w-[360px] lg:pt-8">
           <span className="text-[64px] leading-none" aria-hidden="true">
             👉
           </span>
-          <h1 className="text-[24px] font-black leading-snug text-black">
-            This is Treyce
-          </h1>
-          <p className="text-[16px] font-semibold leading-snug text-black">
+          <h1 className="headline">This is Treyce</h1>
+          <p className="body-copy">
             You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it funny....
             It&rsquo;s a long story
           </p>

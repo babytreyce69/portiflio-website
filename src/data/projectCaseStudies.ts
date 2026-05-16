@@ -21,7 +21,7 @@ export const projectCaseStudies: CaseStudy[] = [
       {
         type: 'image',
         alt: 'Mercury mobile web onboarding screens',
-        className: 'min-h-[360px] bg-[#b4b4b4]',
+        className: 'min-h-[360px] bg-placeholder-dark',
       },
       {
         type: 'text',
@@ -36,7 +36,7 @@ export const projectCaseStudies: CaseStudy[] = [
       {
         type: 'image',
         alt: 'Onboarding flow detail',
-        className: 'min-h-[280px] bg-[#d9d9d9]',
+        className: 'min-h-[280px] bg-placeholder',
       },
       {
         type: 'text',

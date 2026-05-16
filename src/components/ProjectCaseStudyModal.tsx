@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { CaseStudy } from '../data/projectCaseStudies'
-import Tag from './Tag'
+import { Button } from './Button'
+import Pill from './Pill'
 
 type Props = {
   study: CaseStudy
@@ -40,36 +41,25 @@ export default function ProjectCaseStudyModal({ study, onClose }: Props) {
 
   return createPortal(
     <div
-      className={`case-study-modal fixed inset-0 z-[100] flex flex-col bg-[#f2f0e6] ${closing ? 'case-study-modal--closing' : ''}`}
+      className={`case-study-modal canvas fixed inset-0 z-[100] flex flex-col ${closing ? 'case-study-modal--closing' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="case-study-title"
       onAnimationEnd={handleAnimationEnd}
     >
-      <header className="sticky top-0 z-10 shrink-0 border-b border-black/10 bg-[#f2f0e6]/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-10 shrink-0 border-b border-black/10 bg-[color-mix(in_srgb,var(--color-canvas)_95%,transparent)] backdrop-blur-sm">
         <div className="mx-auto flex w-full max-w-[1000px] items-center justify-end px-6 py-4 sm:px-10 lg:px-10">
-          <button
-            type="button"
-            onClick={requestClose}
-            className="inline-flex w-fit items-center justify-center rounded-xl border border-black px-4 py-3 text-[12px] font-semibold text-black transition hover:bg-black hover:text-white"
-          >
-            Close
-          </button>
+          <Button onClick={requestClose}>Close</Button>
         </div>
       </header>
 
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         <article className="mx-auto w-full max-w-[1000px] px-6 py-10 pb-16 sm:px-10 lg:px-10">
-          <Tag>{study.tag}</Tag>
-          <h1
-            id="case-study-title"
-            className="mt-4 text-[24px] font-black leading-snug text-black lg:text-[32px]"
-          >
+          <Pill>{study.tag}</Pill>
+          <h1 id="case-study-title" className="headline mt-4 lg:text-[32px]">
             {study.title}
           </h1>
-          <p className="mt-4 max-w-[640px] text-[16px] font-semibold leading-snug text-black">
-            {study.intro}
-          </p>
+          <p className="body-copy mt-4 max-w-[640px]">{study.intro}</p>
 
           <div className="mt-10 flex flex-col gap-10">
             {study.blocks.map((block, i) => {
@@ -77,7 +67,7 @@ export default function ProjectCaseStudyModal({ study, onClose }: Props) {
                 return (
                   <div
                     key={i}
-                    className={`w-full overflow-hidden rounded-xl ${block.className ?? 'min-h-[280px] bg-[#b4b4b4]'}`}
+                    className={`w-full overflow-hidden rounded-xl ${block.className ?? 'min-h-[280px] bg-placeholder-dark'}`}
                     role="img"
                     aria-label={block.alt}
                   />
@@ -86,11 +76,9 @@ export default function ProjectCaseStudyModal({ study, onClose }: Props) {
               return (
                 <section key={i} className="flex max-w-[640px] flex-col gap-3">
                   {block.heading ? (
-                    <h2 className="text-[20px] font-black text-black">{block.heading}</h2>
+                    <h2 className="headline">{block.heading}</h2>
                   ) : null}
-                  <p className="text-[16px] font-semibold leading-snug text-black">
-                    {block.body}
-                  </p>
+                  <p className="body-copy">{block.body}</p>
                 </section>
               )
             })}
