@@ -9,30 +9,67 @@ const LENS_HALF_HEIGHT = Math.sqrt(R * R - ((CX_RIGHT - CX_LEFT) / 2) ** 2)
 const LENS_TOP = CY - LENS_HALF_HEIGHT
 const LENS_BOTTOM = CY + LENS_HALF_HEIGHT
 
-const arc = (rx: number, ry: number, large: 0 | 1, sweep: 0 | 1, x: number, y: number) =>
+const TOP_ANGLE_LEFT = Math.atan2(LENS_TOP - CY, MID_X - CX_LEFT)
+const BOT_ANGLE_LEFT = Math.atan2(LENS_BOTTOM - CY, MID_X - CX_LEFT)
+const TOP_ANGLE_RIGHT = Math.atan2(LENS_TOP - CY, MID_X - CX_RIGHT)
+const BOT_ANGLE_RIGHT = Math.atan2(LENS_BOTTOM - CY, MID_X - CX_RIGHT)
+
+const arcCmd = (rx: number, ry: number, large: 0 | 1, sweep: 0 | 1, x: number, y: number) =>
   `A ${rx} ${ry} 0 ${large} ${sweep} ${x} ${y}`
 
-/** Center overlap — beige */
+/** SVG arc with explicit sweep so the correct circle edge is chosen */
+function circleArcSegment(
+  cx: number,
+  cy: number,
+  r: number,
+  startAngle: number,
+  endAngle: number,
+  clockwise: boolean,
+): string {
+  const endX = cx + r * Math.cos(endAngle)
+  const endY = cy + r * Math.sin(endAngle)
+  let diff = endAngle - startAngle
+  if (clockwise) {
+    while (diff < 0) diff += 2 * Math.PI
+  } else {
+    while (diff > 0) diff -= 2 * Math.PI
+  }
+  const large: 0 | 1 = Math.abs(diff) > Math.PI ? 1 : 0
+  const sweep: 0 | 1 = clockwise ? 1 : 0
+  return arcCmd(r, r, large, sweep, endX, endY)
+}
+
+function circleArcPath(
+  cx: number,
+  cy: number,
+  r: number,
+  startAngle: number,
+  endAngle: number,
+  clockwise: boolean,
+): string {
+  const startX = cx + r * Math.cos(startAngle)
+  const startY = cy + r * Math.sin(startAngle)
+  return `M ${startX} ${startY} ${circleArcSegment(cx, cy, r, startAngle, endAngle, clockwise)}`
+}
+
 const lensFill = [
   `M ${MID_X} ${LENS_TOP}`,
-  arc(R, R, 0, 1, MID_X, LENS_BOTTOM),
-  arc(R, R, 0, 1, MID_X, LENS_TOP),
+  circleArcSegment(CX_LEFT, CY, R, TOP_ANGLE_LEFT, BOT_ANGLE_LEFT, true),
+  circleArcSegment(CX_RIGHT, CY, R, BOT_ANGLE_RIGHT, TOP_ANGLE_RIGHT, true),
   'Z',
 ].join(' ')
 
-/** Left lobe — Design */
 const leftLobeFill = [
   `M ${MID_X} ${LENS_TOP}`,
-  arc(R, R, 0, 1, MID_X, LENS_BOTTOM),
-  arc(R, R, 1, 0, MID_X, LENS_TOP),
+  circleArcSegment(CX_LEFT, CY, R, TOP_ANGLE_LEFT, BOT_ANGLE_LEFT, true),
+  circleArcSegment(CX_LEFT, CY, R, BOT_ANGLE_LEFT, TOP_ANGLE_LEFT, false),
   'Z',
 ].join(' ')
 
-/** Right lobe — Growth */
 const rightLobeFill = [
   `M ${MID_X} ${LENS_TOP}`,
-  arc(R, R, 0, 0, MID_X, LENS_BOTTOM),
-  arc(R, R, 1, 1, MID_X, LENS_TOP),
+  circleArcSegment(CX_RIGHT, CY, R, TOP_ANGLE_RIGHT, BOT_ANGLE_RIGHT, false),
+  circleArcSegment(CX_RIGHT, CY, R, BOT_ANGLE_RIGHT, TOP_ANGLE_RIGHT, false),
   'Z',
 ].join(' ')
 
@@ -44,18 +81,27 @@ const strokeProps = {
   strokeLinejoin: 'round' as const,
 }
 
-/** Single path around outer silhouette (no doubled circle strokes) */
-const outerStroke = [
-  `M ${MID_X} ${LENS_TOP}`,
-  arc(R, R, 1, 0, MID_X, LENS_BOTTOM),
-  arc(R, R, 1, 1, MID_X, LENS_TOP),
-].join(' ')
+const leftOuterStroke = circleArcPath(
+  CX_LEFT,
+  CY,
+  R,
+  TOP_ANGLE_LEFT,
+  BOT_ANGLE_LEFT,
+  false,
+)
+const rightOuterStroke = circleArcPath(
+  CX_RIGHT,
+  CY,
+  R,
+  BOT_ANGLE_RIGHT,
+  TOP_ANGLE_RIGHT,
+  false,
+)
 
-/** Single path along both lens edges (Design | Me | Growth divider) */
 const lensStroke = [
   `M ${MID_X} ${LENS_TOP}`,
-  arc(R, R, 0, 1, MID_X, LENS_BOTTOM),
-  arc(R, R, 0, 1, MID_X, LENS_TOP),
+  circleArcSegment(CX_LEFT, CY, R, TOP_ANGLE_LEFT, BOT_ANGLE_LEFT, true),
+  circleArcSegment(CX_RIGHT, CY, R, BOT_ANGLE_RIGHT, TOP_ANGLE_RIGHT, true),
 ].join(' ')
 
 export default function GrowthDesigner() {
@@ -89,7 +135,8 @@ export default function GrowthDesigner() {
             <path d={lensFill} fill={BEIGE} />
 
             <g {...strokeProps}>
-              <path d={outerStroke} />
+              <path d={leftOuterStroke} />
+              <path d={rightOuterStroke} />
               <path d={lensStroke} />
             </g>
           </svg>
@@ -111,7 +158,7 @@ export default function GrowthDesigner() {
             </span>
           </div>
         </div>
-        </div>
+      </div>
     </section>
   )
 }
