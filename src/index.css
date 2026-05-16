@@ -52,6 +52,16 @@ body {
   }
 }
 
+html.modal-open {
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  html.modal-open {
+    scroll-snap-type: none;
+  }
+}
+
 /*
  * Hover-on-a-word kinetic type powered by animate.css keyframes
  * (https://animate.style/). Each word sets its own animation via
