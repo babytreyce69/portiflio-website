@@ -13,7 +13,7 @@ export default function GrowthDesigner() {
         </div>
 
         <div
-          className="relative mx-auto shrink-0"
+          className="relative mx-auto shrink-0 origin-center max-[520px]:scale-[0.82] max-[400px]:scale-[0.68]"
           style={{ width: 460, height: 320 }}
           aria-hidden="true"
         >
