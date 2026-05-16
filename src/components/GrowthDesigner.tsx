@@ -95,7 +95,7 @@ const LABEL_TOP = 160
 const LEFT_LOBE_INNER_X = CX_RIGHT - R
 const RIGHT_LOBE_INNER_X = CX_LEFT + R
 const DESIGN_LABEL_X =
-  (CX_LEFT - R + LEFT_LOBE_INNER_X) / 2 + 4
+  (CX_LEFT - R + LEFT_LOBE_INNER_X) / 2 + 8
 const GROWTH_LABEL_X = (RIGHT_LOBE_INNER_X + (CX_RIGHT + R)) / 2 - 4
 
 export default function GrowthDesigner() {
