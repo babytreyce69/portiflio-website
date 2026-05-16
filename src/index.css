@@ -52,6 +52,40 @@ body {
   }
 }
 
+@keyframes case-study-modal-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes case-study-modal-slide-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.case-study-modal {
+  animation: case-study-modal-slide-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform;
+}
+
+.case-study-modal--closing {
+  animation: case-study-modal-slide-down 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study-modal,
+  .case-study-modal--closing {
+    animation: none;
+  }
+}
+
 html.modal-open {
   overflow: hidden;
 }

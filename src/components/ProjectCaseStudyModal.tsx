@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { CaseStudy } from '../data/projectCaseStudies'
 import Tag from './Tag'
@@ -9,30 +9,48 @@ type Props = {
 }
 
 export default function ProjectCaseStudyModal({ study, onClose }: Props) {
+  const [closing, setClosing] = useState(false)
+
+  const requestClose = useCallback(() => {
+    if (closing) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      onClose()
+      return
+    }
+    setClosing(true)
+  }, [closing, onClose])
+
   useEffect(() => {
     document.documentElement.classList.add('modal-open')
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') requestClose()
     }
     window.addEventListener('keydown', onKey)
     return () => {
       document.documentElement.classList.remove('modal-open')
       window.removeEventListener('keydown', onKey)
     }
-  }, [onClose])
+  }, [requestClose])
+
+  const handleAnimationEnd = (e: React.AnimationEvent<HTMLDivElement>) => {
+    if (closing && e.animationName === 'case-study-modal-slide-down') {
+      onClose()
+    }
+  }
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex flex-col bg-[#f2f0e6]"
+      className={`case-study-modal fixed inset-0 z-[100] flex flex-col bg-[#f2f0e6] ${closing ? 'case-study-modal--closing' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="case-study-title"
+      onAnimationEnd={handleAnimationEnd}
     >
       <header className="sticky top-0 z-10 shrink-0 border-b border-black/10 bg-[#f2f0e6]/95 backdrop-blur-sm">
         <div className="mx-auto flex w-full max-w-[1000px] items-center justify-end px-6 py-4 sm:px-10 lg:px-10">
           <button
             type="button"
-            onClick={onClose}
+            onClick={requestClose}
             className="inline-flex w-fit items-center justify-center rounded-xl border border-black px-4 py-3 text-[12px] font-semibold text-black transition hover:bg-black hover:text-white"
           >
             Close
