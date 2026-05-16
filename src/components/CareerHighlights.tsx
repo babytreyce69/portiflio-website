@@ -76,7 +76,7 @@ export default function CareerHighlights() {
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-2"
+                className="mt-4"
               >
                 See case study
               </PillLink>
