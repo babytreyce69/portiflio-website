@@ -25,7 +25,7 @@ function ProjectCard({
     <article className="card overflow-hidden">
       <div className="flex flex-col lg:flex-row lg:min-h-[444px]">
         <div className="flex flex-col justify-center gap-4 p-8 lg:w-[55%] lg:p-12">
-          <Pill>
+          <Pill onCard>
             {tagIcon}
             {tag}
           </Pill>

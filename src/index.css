@@ -18,7 +18,7 @@
 
 /*
  * Named styles — use these class names when requesting changes:
- * headline | body-copy | small-copy | pill | button | card | canvas
+ * headline | body-copy | small-copy | pill | pill-on-card | button | card | canvas
  */
 @layer components {
   .canvas {
@@ -65,6 +65,15 @@
   .pill:hover {
     border-color: rgb(0 0 0 / 0.45);
     background-color: #e8e6dc;
+  }
+
+  /* Pills inside cards: small copy only, no fill or border */
+  .pill-on-card {
+    display: inline-flex;
+    width: fit-content;
+    align-self: flex-start;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .button {

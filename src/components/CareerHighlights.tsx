@@ -27,7 +27,7 @@ export default function CareerHighlights() {
 
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
           <div className="card w-full p-6 lg:max-w-[460px] lg:shrink-0">
-            <Pill>Treyce has grown these businesses</Pill>
+            <Pill onCard>Treyce has grown these businesses</Pill>
             <ul className="mt-6 flex flex-col">
               {businesses.map((name, i) => (
                 <li
@@ -49,7 +49,7 @@ export default function CareerHighlights() {
           <div className="flex min-w-0 flex-1 flex-col gap-4">
             <div className="card relative min-h-[200px] overflow-hidden p-6 lg:min-h-[166px]">
               <div className="relative z-10 max-w-[55%]">
-                <Pill>He spoke at</Pill>
+                <Pill onCard>He spoke at</Pill>
                 <p className="body-copy mt-4">Config 2022</p>
                 <a
                   href="https://www.youtube.com/watch?v=3aH--S3r9n4"
@@ -68,7 +68,7 @@ export default function CareerHighlights() {
             </div>
 
             <div className="card min-h-[166px] p-6">
-              <Pill>Hes great at growth</Pill>
+              <Pill onCard>Hes great at growth</Pill>
               <p className="body-copy mt-4">
                 Most recently he 2X Banking Application Submissions at Mercury
               </p>
