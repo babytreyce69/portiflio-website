@@ -50,7 +50,7 @@ export default function CareerHighlights() {
             <div className="card relative min-h-[200px] overflow-hidden p-6 lg:min-h-[166px]">
               <div className="relative z-10 max-w-[55%]">
                 <Pill onCard={true}>He spoke at</Pill>
-                <p className="body-copy mt-4">Config 2022</p>
+                <p className="body-copy mt-2">Config 2022</p>
                 <PillLink
                   href="https://www.youtube.com/watch?v=3aH--S3r9n4"
                   target="_blank"
@@ -69,14 +69,14 @@ export default function CareerHighlights() {
 
             <div className="card min-h-[166px] p-6">
               <Pill onCard={true}>Hes great at growth</Pill>
-              <p className="body-copy mt-4">
+              <p className="body-copy mt-2">
                 Most recently he 2X Banking Application Submissions at Mercury
               </p>
               <PillLink
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4"
+                className="mt-6"
               >
                 See case study
               </PillLink>
