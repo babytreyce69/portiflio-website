@@ -34,7 +34,7 @@
 
   .body-copy {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.375;
     color: var(--color-ink);
   }
@@ -112,7 +112,7 @@
 
   .link {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.375;
     color: var(--color-ink);
     text-decoration: underline;
