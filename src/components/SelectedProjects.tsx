@@ -1,10 +1,4 @@
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex w-fit self-start items-center gap-2 rounded-lg border border-black bg-[#f2f0e6] px-2 py-2 text-[14px] font-semibold text-black">
-      {children}
-    </span>
-  )
-}
+import Tag from './Tag'
 
 function ProjectCard({
   tag,
