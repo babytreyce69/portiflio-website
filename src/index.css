@@ -70,27 +70,18 @@
 
   .pill:hover,
   a.pill:hover {
-    border-color: rgb(0 0 0 / 45%);
-    background-color: #e8e6dc;
+    background-color: var(--color-ink);
+    color: var(--color-surface);
+    border-color: var(--color-ink);
   }
 
-  /* Pills inside cards: small copy only, no fill or border until hover */
+  /* Pills inside cards: small copy only — no box, padding, or hover */
   .pill-on-card {
     display: inline-flex;
     width: fit-content;
     align-self: flex-start;
     align-items: center;
     gap: 0.5rem;
-    border-radius: var(--radius-pill);
-    padding: 8px;
-    transition:
-      background-color 150ms ease,
-      color 150ms ease;
-  }
-
-  .pill-on-card:hover {
-    background-color: var(--color-ink);
-    color: var(--color-surface);
   }
 
   .button {
