@@ -41,7 +41,9 @@ export default function CareerHighlights() {
             He has been a product designer for 10+ years (He&apos;s sorta proud and
             sorta embraced about that it&apos;s a really long time)
           </p>
-          <OutlineButton href="https://www.linkedin.com">Visit Linkedin</OutlineButton>
+          <OutlineButton href="https://www.linkedin.com/in/treycemeredith/">
+            Visit Linkedin
+          </OutlineButton>
         </header>
 
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
