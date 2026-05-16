@@ -14,10 +14,12 @@ const BOT_ANGLE_LEFT = Math.atan2(LENS_BOTTOM - CY, MID_X - CX_LEFT)
 const TOP_ANGLE_RIGHT = Math.atan2(LENS_TOP - CY, MID_X - CX_RIGHT)
 const BOT_ANGLE_RIGHT = Math.atan2(LENS_BOTTOM - CY, MID_X - CX_RIGHT)
 
+/** Padding so 2px strokes are not clipped at circle edges */
+const PAD = STROKE
+
 const arcCmd = (rx: number, ry: number, large: 0 | 1, sweep: 0 | 1, x: number, y: number) =>
   `A ${rx} ${ry} 0 ${large} ${sweep} ${x} ${y}`
 
-/** SVG arc with explicit sweep so the correct circle edge is chosen */
 function circleArcSegment(
   cx: number,
   cy: number,
@@ -58,28 +60,6 @@ const lensFill = [
   circleArcSegment(CX_RIGHT, CY, R, BOT_ANGLE_RIGHT, TOP_ANGLE_RIGHT, true),
   'Z',
 ].join(' ')
-
-const leftLobeFill = [
-  `M ${MID_X} ${LENS_TOP}`,
-  circleArcSegment(CX_LEFT, CY, R, TOP_ANGLE_LEFT, BOT_ANGLE_LEFT, true),
-  circleArcSegment(CX_LEFT, CY, R, BOT_ANGLE_LEFT, TOP_ANGLE_LEFT, false),
-  'Z',
-].join(' ')
-
-const rightLobeFill = [
-  `M ${MID_X} ${LENS_TOP}`,
-  circleArcSegment(CX_RIGHT, CY, R, TOP_ANGLE_RIGHT, BOT_ANGLE_RIGHT, false),
-  circleArcSegment(CX_RIGHT, CY, R, BOT_ANGLE_RIGHT, TOP_ANGLE_RIGHT, false),
-  'Z',
-].join(' ')
-
-const strokeProps = {
-  stroke: 'black',
-  strokeWidth: STROKE,
-  fill: 'none' as const,
-  strokeLinecap: 'round' as const,
-  strokeLinejoin: 'round' as const,
-}
 
 const leftOuterStroke = circleArcPath(
   CX_LEFT,
@@ -126,15 +106,21 @@ export default function GrowthDesigner() {
           <svg
             width="460"
             height="320"
-            viewBox="0 0 460 320"
-            className="absolute inset-0"
+            viewBox={`${-PAD} ${-PAD} ${460 + PAD * 2} ${320 + PAD * 2}`}
+            className="absolute inset-0 overflow-visible"
             fill="none"
           >
-            <path d={leftLobeFill} fill="white" />
-            <path d={rightLobeFill} fill="white" />
+            <circle cx={CX_LEFT} cy={CY} r={R} fill="white" />
+            <circle cx={CX_RIGHT} cy={CY} r={R} fill="white" />
             <path d={lensFill} fill={BEIGE} />
 
-            <g {...strokeProps}>
+            <g
+              stroke="black"
+              strokeWidth={STROKE}
+              fill="none"
+              strokeLinecap="butt"
+              strokeLinejoin="round"
+            >
               <path d={leftOuterStroke} />
               <path d={rightOuterStroke} />
               <path d={lensStroke} />
