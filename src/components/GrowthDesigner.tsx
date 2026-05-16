@@ -1,4 +1,5 @@
 const BEIGE = '#f2f0e6'
+const STROKE = 2
 const R = 154.5
 const CY = 160
 const CX_LEFT = 154.5
@@ -8,12 +9,53 @@ const LENS_HALF_HEIGHT = Math.sqrt(R * R - ((CX_RIGHT - CX_LEFT) / 2) ** 2)
 const LENS_TOP = CY - LENS_HALF_HEIGHT
 const LENS_BOTTOM = CY + LENS_HALF_HEIGHT
 
-/** Intersection of two equal circles — beige fill in the overlap */
-const lensPath = [
+const arc = (rx: number, ry: number, large: 0 | 1, sweep: 0 | 1, x: number, y: number) =>
+  `A ${rx} ${ry} 0 ${large} ${sweep} ${x} ${y}`
+
+/** Center overlap — beige */
+const lensFill = [
   `M ${MID_X} ${LENS_TOP}`,
-  `A ${R} ${R} 0 0 1 ${MID_X} ${LENS_BOTTOM}`,
-  `A ${R} ${R} 0 0 1 ${MID_X} ${LENS_TOP}`,
+  arc(R, R, 0, 1, MID_X, LENS_BOTTOM),
+  arc(R, R, 0, 1, MID_X, LENS_TOP),
   'Z',
+].join(' ')
+
+/** Left lobe — Design */
+const leftLobeFill = [
+  `M ${MID_X} ${LENS_TOP}`,
+  arc(R, R, 0, 1, MID_X, LENS_BOTTOM),
+  arc(R, R, 1, 0, MID_X, LENS_TOP),
+  'Z',
+].join(' ')
+
+/** Right lobe — Growth */
+const rightLobeFill = [
+  `M ${MID_X} ${LENS_TOP}`,
+  arc(R, R, 0, 0, MID_X, LENS_BOTTOM),
+  arc(R, R, 1, 1, MID_X, LENS_TOP),
+  'Z',
+].join(' ')
+
+const strokeProps = {
+  stroke: 'black',
+  strokeWidth: STROKE,
+  fill: 'none' as const,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+}
+
+/** Single path around outer silhouette (no doubled circle strokes) */
+const outerStroke = [
+  `M ${MID_X} ${LENS_TOP}`,
+  arc(R, R, 1, 0, MID_X, LENS_BOTTOM),
+  arc(R, R, 1, 1, MID_X, LENS_TOP),
+].join(' ')
+
+/** Single path along both lens edges (Design | Me | Growth divider) */
+const lensStroke = [
+  `M ${MID_X} ${LENS_TOP}`,
+  arc(R, R, 0, 1, MID_X, LENS_BOTTOM),
+  arc(R, R, 0, 1, MID_X, LENS_TOP),
 ].join(' ')
 
 export default function GrowthDesigner() {
@@ -42,23 +84,14 @@ export default function GrowthDesigner() {
             className="absolute inset-0"
             fill="none"
           >
-            <circle
-              cx={CX_LEFT}
-              cy={CY}
-              r={R}
-              fill="white"
-              stroke="black"
-              strokeWidth={2}
-            />
-            <circle
-              cx={CX_RIGHT}
-              cy={CY}
-              r={R}
-              fill="white"
-              stroke="black"
-              strokeWidth={2}
-            />
-            <path d={lensPath} fill={BEIGE} />
+            <path d={leftLobeFill} fill="white" />
+            <path d={rightLobeFill} fill="white" />
+            <path d={lensFill} fill={BEIGE} />
+
+            <g {...strokeProps}>
+              <path d={outerStroke} />
+              <path d={lensStroke} />
+            </g>
           </svg>
 
           <span className="absolute left-[86px] top-[144px] z-10 text-[16px] font-semibold text-black">
@@ -78,7 +111,7 @@ export default function GrowthDesigner() {
             </span>
           </div>
         </div>
-      </div>
+        </div>
     </section>
   )
 }
