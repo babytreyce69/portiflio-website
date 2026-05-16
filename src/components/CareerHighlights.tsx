@@ -2,7 +2,7 @@ const businesses = ['Mercury', 'Dropbox', 'OpenTable', 'Life360'] as const
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-lg bg-black/10 px-2 py-2 text-[14px] font-semibold text-black">
+    <span className="inline-flex w-fit self-start items-center rounded-lg border border-black bg-[#f2f0e6] px-2 py-2 text-[14px] font-semibold text-black">
       {children}
     </span>
   )
