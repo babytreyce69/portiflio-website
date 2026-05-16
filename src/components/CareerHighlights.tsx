@@ -1,7 +1,7 @@
 const businesses = ['Mercury', 'Dropbox', 'OpenTable', 'Life360'] as const
 
 import { ButtonLink } from './Button'
-import Pill from './Pill'
+import Pill, { PillLink } from './Pill'
 
 export default function CareerHighlights() {
   const base = import.meta.env.BASE_URL
@@ -27,7 +27,7 @@ export default function CareerHighlights() {
 
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
           <div className="card w-full p-6 lg:max-w-[460px] lg:shrink-0">
-            <Pill onCard>Treyce has grown these businesses</Pill>
+            <Pill onCard={true}>Treyce has grown these businesses</Pill>
             <ul className="mt-6 flex flex-col">
               {businesses.map((name, i) => (
                 <li
@@ -49,16 +49,16 @@ export default function CareerHighlights() {
           <div className="flex min-w-0 flex-1 flex-col gap-4">
             <div className="card relative min-h-[200px] overflow-hidden p-6 lg:min-h-[166px]">
               <div className="relative z-10 max-w-[55%]">
-                <Pill onCard>He spoke at</Pill>
+                <Pill onCard={true}>He spoke at</Pill>
                 <p className="body-copy mt-4">Config 2022</p>
-                <a
+                <PillLink
                   href="https://www.youtube.com/watch?v=3aH--S3r9n4"
                   target="_blank"
                   rel="noreferrer"
-                  className="link mt-2 inline-block"
+                  className="mt-2"
                 >
                   Watch his talk
-                </a>
+                </PillLink>
               </div>
               <img
                 src={`${base}assets/card-screenshot.png`}
@@ -68,18 +68,18 @@ export default function CareerHighlights() {
             </div>
 
             <div className="card min-h-[166px] p-6">
-              <Pill onCard>Hes great at growth</Pill>
+              <Pill onCard={true}>Hes great at growth</Pill>
               <p className="body-copy mt-4">
                 Most recently he 2X Banking Application Submissions at Mercury
               </p>
-              <a
+              <PillLink
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="link mt-2 inline-block"
+                className="mt-2"
               >
                 See case study
-              </a>
+              </PillLink>
             </div>
           </div>
         </div>

@@ -62,8 +62,14 @@
       border-color 150ms ease;
   }
 
-  .pill:hover {
-    border-color: rgb(0 0 0 / 0.45);
+  a.pill {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .pill:hover,
+  a.pill:hover {
+    border-color: rgb(0 0 0 / 45%);
     background-color: #e8e6dc;
   }
 

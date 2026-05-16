@@ -1,3 +1,5 @@
+import type { ComponentPropsWithoutRef } from 'react'
+
 type PillProps = {
   children: React.ReactNode
   className?: string
@@ -5,7 +7,15 @@ type PillProps = {
   onCard?: boolean
 }
 
-export default function Pill({ children, className = '', onCard = false }: PillProps) {
+type PillLinkProps = ComponentPropsWithoutRef<'a'> & {
+  className?: string
+}
+
+export default function Pill({
+  children,
+  className = '',
+  onCard = false,
+}: PillProps) {
   if (onCard) {
     return (
       <span className={`pill-on-card small-copy ${className}`.trim()}>{children}</span>
@@ -14,5 +24,14 @@ export default function Pill({ children, className = '', onCard = false }: PillP
 
   return (
     <span className={`pill small-copy ${className}`.trim()}>{children}</span>
+  )
+}
+
+export function PillLink({ className = '', ...props }: PillLinkProps) {
+  return (
+    <a
+      className={`pill small-copy cursor-pointer ${className}`.trim()}
+      {...props}
+    />
   )
 }
