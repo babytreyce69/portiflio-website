@@ -25,7 +25,7 @@ export default function CareerHighlights() {
           </ButtonLink>
         </header>
 
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
           <div className="card w-full p-6 lg:max-w-[460px] lg:shrink-0">
             <Pill onCard={true}>Treyce has grown these businesses</Pill>
             <ul className="mt-2 flex flex-col">
@@ -46,8 +46,8 @@ export default function CareerHighlights() {
             </ul>
           </div>
 
-          <div className="flex min-w-0 flex-1 flex-col gap-4">
-            <div className="card relative min-h-[200px] overflow-hidden p-6 lg:min-h-[166px]">
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4">
+            <div className="card relative min-h-[200px] shrink-0 overflow-hidden p-6 lg:min-h-[166px]">
               <div className="relative z-10 max-w-[55%]">
                 <Pill onCard={true}>He spoke at</Pill>
                 <p className="body-copy mt-2">Config 2022</p>
@@ -55,7 +55,7 @@ export default function CareerHighlights() {
                   href="https://www.youtube.com/watch?v=3aH--S3r9n4"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-4"
+                  className="mt-6"
                 >
                   Watch his talk
                 </PillLink>
@@ -67,7 +67,7 @@ export default function CareerHighlights() {
               />
             </div>
 
-            <div className="card min-h-[166px] p-6">
+            <div className="card flex flex-col p-6 lg:min-h-0 lg:flex-1">
               <Pill onCard={true}>Hes great at growth</Pill>
               <p className="body-copy mt-2">
                 Most recently he 2X Banking Application Submissions at Mercury
