@@ -150,7 +150,7 @@ export default function GrowthDesigner() {
           </span>
           <span
             className="absolute left-1/2 z-10 -translate-x-1/2 text-[48px] leading-none"
-            style={{ top: LABEL_TOP - 52 }}
+            style={{ top: LABEL_TOP - 68 }}
             aria-hidden="true"
           >
             👨‍🦰
