@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
+    <section className="snap-section bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto w-full max-w-[1000px] px-6 py-10 sm:px-10 lg:px-10 lg:py-[60px]">
 
         {/* Section heading */}

@@ -29,6 +29,44 @@ body {
 }
 
 /*
+ * Desktop (lg+): one scroll gesture = one section (Neon-style snap).
+ * Main is the scroll container; each section is a full-viewport snap target.
+ */
+@media (min-width: 1024px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #root {
+    height: 100%;
+  }
+
+  .page-snap {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .page-snap {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+}
+
+/*
  * Hover-on-a-word kinetic type powered by animate.css keyframes
  * (https://animate.style/). Each word sets its own animation via
  * --hover-anim, e.g. bounce, tada, rubberBand, jello, swing, wobble,
