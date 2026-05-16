@@ -18,7 +18,7 @@
 
 /*
  * Named styles — use these class names when requesting changes:
- * headline | body-copy | pill | button | card | canvas
+ * headline | body-copy | small-copy | pill | button | card | canvas
  */
 @layer components {
   .canvas {
@@ -39,6 +39,13 @@
     color: var(--color-ink);
   }
 
+  .small-copy {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-ink);
+  }
+
   .pill {
     display: inline-flex;
     width: fit-content;
@@ -49,10 +56,6 @@
     border: 1px solid var(--color-ink);
     background-color: var(--color-canvas);
     padding: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--color-ink);
     cursor: default;
     transition:
       background-color 150ms ease,
@@ -73,10 +76,6 @@
     border: 1px solid var(--color-ink);
     background-color: var(--color-canvas);
     padding: 16px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--color-ink);
     text-decoration: none;
     cursor: pointer;
     transition:

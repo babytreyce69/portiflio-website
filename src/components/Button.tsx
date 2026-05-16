@@ -9,9 +9,11 @@ type ButtonLinkProps = ComponentPropsWithoutRef<'a'> & {
 }
 
 export function Button({ className = '', type = 'button', ...props }: ButtonProps) {
-  return <button type={type} className={`button ${className}`.trim()} {...props} />
+  return (
+    <button type={type} className={`button small-copy ${className}`.trim()} {...props} />
+  )
 }
 
 export function ButtonLink({ className = '', ...props }: ButtonLinkProps) {
-  return <a className={`button ${className}`.trim()} {...props} />
+  return <a className={`button small-copy ${className}`.trim()} {...props} />
 }

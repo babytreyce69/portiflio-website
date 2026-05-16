@@ -5,5 +5,7 @@ export default function Pill({
   children: React.ReactNode
   className?: string
 }) {
-  return <span className={`pill ${className}`.trim()}>{children}</span>
+  return (
+    <span className={`pill small-copy ${className}`.trim()}>{children}</span>
+  )
 }
