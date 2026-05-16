@@ -87,6 +87,10 @@ const lensStroke = [
 /** Shared baseline for Design / Me / Growth labels */
 const LABEL_TOP = 160
 
+/** Horizontal center of each outer lobe at the label row (y = CY) */
+const DESIGN_LABEL_X = (CX_LEFT - R + (CX_RIGHT - R)) / 2
+const GROWTH_LABEL_X = (CX_LEFT + R + (CX_RIGHT + R)) / 2
+
 export default function GrowthDesigner() {
   return (
     <section className="snap-section bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
@@ -131,14 +135,14 @@ export default function GrowthDesigner() {
           </svg>
 
           <span
-            className="absolute left-[86px] z-10 text-[16px] font-semibold leading-none text-black"
-            style={{ top: LABEL_TOP }}
+            className="absolute z-10 -translate-x-1/2 text-[16px] font-semibold leading-none text-black"
+            style={{ top: LABEL_TOP, left: DESIGN_LABEL_X }}
           >
             Design
           </span>
           <span
-            className="absolute right-[70px] z-10 text-[16px] font-semibold leading-none text-black"
-            style={{ top: LABEL_TOP }}
+            className="absolute z-10 -translate-x-1/2 text-[16px] font-semibold leading-none text-black"
+            style={{ top: LABEL_TOP, left: GROWTH_LABEL_X }}
           >
             Growth
           </span>
