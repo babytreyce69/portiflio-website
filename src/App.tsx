@@ -5,7 +5,7 @@ import GridOverlay from './components/GridOverlay'
 
 function App() {
   return (
-    <main className="page-snap min-h-screen bg-[#f2f0e6] font-sans">
+    <main className="min-h-screen bg-[#f2f0e6] font-sans">
       <Hero />
       <CareerHighlights />
       <About />

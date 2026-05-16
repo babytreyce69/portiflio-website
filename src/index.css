@@ -30,26 +30,12 @@ body {
 
 /*
  * Desktop (lg+): one scroll gesture = one section (Neon-style snap).
- * Main is the scroll container; each section is a full-viewport snap target.
+ * Snap on the document scroll — avoids trapping overflow on body (blank page bug).
  */
 @media (min-width: 1024px) {
-  html,
-  body {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #root {
-    height: 100%;
-  }
-
-  .page-snap {
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+  html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
-    overscroll-behavior-y: contain;
   }
 
   .snap-section {
@@ -60,7 +46,7 @@ body {
 }
 
 @media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
-  .page-snap {
+  html {
     scroll-snap-type: none;
     scroll-behavior: auto;
   }
