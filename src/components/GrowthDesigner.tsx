@@ -84,6 +84,9 @@ const lensStroke = [
   circleArcSegment(CX_RIGHT, CY, R, BOT_ANGLE_RIGHT, TOP_ANGLE_RIGHT, true),
 ].join(' ')
 
+/** Shared baseline for Design / Me / Growth labels */
+const LABEL_TOP = 160
+
 export default function GrowthDesigner() {
   return (
     <section className="snap-section bg-[#f2f0e6] lg:flex lg:min-h-screen lg:items-center">
@@ -127,22 +130,31 @@ export default function GrowthDesigner() {
             </g>
           </svg>
 
-          <span className="absolute left-[86px] top-[144px] z-10 text-[16px] font-semibold text-black">
+          <span
+            className="absolute left-[86px] z-10 text-[16px] font-semibold leading-none text-black"
+            style={{ top: LABEL_TOP }}
+          >
             Design
           </span>
-          <span className="absolute right-[70px] top-[144px] z-10 text-[16px] font-semibold text-black">
+          <span
+            className="absolute right-[70px] z-10 text-[16px] font-semibold leading-none text-black"
+            style={{ top: LABEL_TOP }}
+          >
             Growth
           </span>
-
-          <div
-            className="absolute left-1/2 z-10 flex flex-col items-center gap-0"
-            style={{ top: CY, transform: 'translate(-50%, -50%)' }}
+          <span
+            className="absolute left-1/2 z-10 -translate-x-1/2 text-[16px] font-semibold leading-none text-black"
+            style={{ top: LABEL_TOP }}
           >
-            <span className="text-[48px] leading-none">👨‍🦰</span>
-            <span className="-mt-1 text-[16px] font-semibold leading-tight text-black">
-              Me
-            </span>
-          </div>
+            Me
+          </span>
+          <span
+            className="absolute left-1/2 z-10 -translate-x-1/2 text-[48px] leading-none"
+            style={{ top: LABEL_TOP - 52 }}
+            aria-hidden="true"
+          >
+            👨‍🦰
+          </span>
         </div>
       </div>
     </section>
