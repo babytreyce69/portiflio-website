@@ -87,9 +87,16 @@ const lensStroke = [
 /** Shared baseline for Design / Me / Growth labels */
 const LABEL_TOP = 160
 
-/** Horizontal center of each outer lobe at the label row (y = CY) */
-const DESIGN_LABEL_X = (CX_LEFT - R + (CX_RIGHT - R)) / 2
-const GROWTH_LABEL_X = (CX_LEFT + R + (CX_RIGHT + R)) / 2
+/**
+ * Lobe label positions at y = CY.
+ * Design uses an optical offset — geometric midpoint reads too far right
+ * against the curved inner edge.
+ */
+const LEFT_LOBE_INNER_X = CX_RIGHT - R
+const RIGHT_LOBE_INNER_X = CX_LEFT + R
+const DESIGN_LABEL_X =
+  (CX_LEFT - R + LEFT_LOBE_INNER_X) / 2 - 16
+const GROWTH_LABEL_X = (RIGHT_LOBE_INNER_X + (CX_RIGHT + R)) / 2
 
 export default function GrowthDesigner() {
   return (
