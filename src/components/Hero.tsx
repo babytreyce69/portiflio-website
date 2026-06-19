@@ -29,19 +29,23 @@ export default function Hero() {
   return (
     <section id="hero" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
       <div className="section-inner py-24 lg:py-28">
-        <div className="hero-layout">
-          <div className="hero-visual">
-            <Portrait />
-            <ChatBubble />
+        <div className="split-section">
+          <div className="split-section__col split-section__col--start">
+            <div className="hero-visual">
+              <Portrait />
+              <ChatBubble />
+            </div>
           </div>
 
-          <div className="hero-copy">
-            <h1 className="header mb-[8px]">This is Treyce</h1>
-            <div className="body-copy">
-              <p className="mb-0">
-                You pronounce it &ldquo;Trace&rdquo;. Yes his parents spelled it
-                funny....It&rsquo;s a long story
-              </p>
+          <div className="split-section__col split-section__col--end">
+            <div className="hero-copy">
+              <h1 className="header mb-[8px]">This is Treyce</h1>
+              <div className="body-copy">
+                <p className="mb-0">
+                  You pronounce it &ldquo;Trace&rdquo;. Yes his parents spelled it
+                  funny....It&rsquo;s a long story
+                </p>
+              </div>
             </div>
           </div>
         </div>
