@@ -1,5 +1,3 @@
-import Pill from './Pill'
-
 const base = import.meta.env.BASE_URL
 
 function Portrait() {
@@ -38,13 +36,12 @@ export default function Hero() {
           </div>
 
           <div className="hero-copy">
-            <Pill className="mb-[14px]">Welcome friends!!!</Pill>
             <h1 className="header mb-[8px]">This is Treyce</h1>
-            <div className="body-copy max-w-[369px]">
+            <div className="body-copy">
               <p className="mb-0">
-                You pronounce it &ldquo;Trace&rdquo;. Yes his parents spelled it funny....
+                You pronounce it &ldquo;Trace&rdquo;. Yes his parents spelled it
+                funny....It&rsquo;s a long story
               </p>
-              <p>It&rsquo;s a long story</p>
             </div>
           </div>
         </div>

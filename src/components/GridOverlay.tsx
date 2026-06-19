@@ -29,7 +29,7 @@ export default function GridOverlay() {
     >
       <div
         className="relative h-full w-full"
-        style={{ maxWidth: 1000 }}
+        style={{ maxWidth: 760 }}
       >
         {/* Column tracks */}
         <div

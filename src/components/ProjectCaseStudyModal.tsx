@@ -48,13 +48,13 @@ export default function ProjectCaseStudyModal({ study, onClose }: Props) {
       onAnimationEnd={handleAnimationEnd}
     >
       <header className="sticky top-0 z-10 shrink-0 border-b border-black/10 bg-white/95 backdrop-blur-sm">
-        <div className="mx-auto flex w-full max-w-[1000px] items-center justify-end px-6 py-4 sm:px-10 lg:px-10">
+        <div className="mx-auto flex w-full max-w-[760px] items-center justify-end px-6 py-4 sm:px-6">
           <Button onClick={requestClose}>Close</Button>
         </div>
       </header>
 
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-        <article className="mx-auto w-full max-w-[1000px] px-6 py-10 pb-16 sm:px-10 lg:px-10">
+        <article className="mx-auto w-full max-w-[760px] px-6 py-10 pb-16 sm:px-6">
           <Pill>{study.tag}</Pill>
           <h1 id="case-study-title" className="header mt-4">
             {study.title}

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { getCaseStudy } from '../data/projectCaseStudies'
 import FeatureCard from './FeatureCard'
-import Pill from './Pill'
 import ProjectCaseStudyModal from './ProjectCaseStudyModal'
 
 const projects = [
@@ -34,12 +33,8 @@ export default function SelectedProjects() {
     <>
       <section id="projects" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
         <div className="section-inner py-16 lg:py-20">
-          <Pill className="mb-[22px]">Projects</Pill>
-          <h2 className="header mb-4">Hes done some cool stuff</h2>
-          <div className="body-copy mb-10 max-w-[505px]">
-            <p className="mb-0">You pronounce it &ldquo;Trace&rdquo;</p>
-            <p className="mb-0">Yes his parents spelled it funny....</p>
-            <p>It&rsquo;s a long story</p>
+          <div className="section-header">
+            <h2 className="header">Projects</h2>
           </div>
 
           <div className="card-row">

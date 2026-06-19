@@ -1,12 +1,21 @@
+import { ButtonLink } from './Button'
 import FeatureCard from './FeatureCard'
-import Pill from './Pill'
 
 export default function CareerHighlights() {
   return (
     <section id="highlights" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
       <div className="section-inner py-16 lg:py-20">
-        <Pill className="mb-[22px]">Notable things</Pill>
-        <h2 className="header mb-10">Hes done some cool stuff</h2>
+        <div className="section-header">
+          <h2 className="header">Hes done some cool stuff</h2>
+          <ButtonLink
+            href="https://www.linkedin.com/in/treycemeredith/"
+            target="_blank"
+            rel="noreferrer"
+            className="button--filled shrink-0"
+          >
+            View Linkedin
+          </ButtonLink>
+        </div>
 
         <div className="card-row">
           <FeatureCard

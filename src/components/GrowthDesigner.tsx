@@ -1,5 +1,3 @@
-import Pill from './Pill'
-
 const base = import.meta.env.BASE_URL
 
 function VerticalVenn() {
@@ -19,7 +17,7 @@ function VerticalVenn() {
       <span className="venn-vertical__label venn-vertical__label--design">
         Design
       </span>
-      <span className="venn-vertical__label venn-vertical__label--me">Me</span>
+      <span className="venn-vertical__label venn-vertical__label--me">Me!</span>
       <span className="venn-vertical__label venn-vertical__label--growth">
         Growth
       </span>
@@ -32,13 +30,15 @@ export default function GrowthDesigner() {
     <section id="growth" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
       <div className="section-inner py-16 lg:py-20">
         <div className="growth-layout">
-          <div className="growth-copy max-w-[505px]">
-            <Pill className="mb-[14px]">Welcome friends!!!</Pill>
-            <h2 className="header mb-[8px]">This is Treyce</h2>
+          <div className="growth-copy">
+            <h2 className="header mb-[8px]">He is a Growth Designer</h2>
             <div className="body-copy">
-              <p className="mb-0">You pronounce it &ldquo;Trace&rdquo;</p>
-              <p className="mb-0">Yes his parents spelled it funny....</p>
-              <p>It&rsquo;s a long story</p>
+              <p className="mb-0">
+                He has been doing growth design for 10 years
+              </p>
+              <p className="mb-0">
+                Before it was even really a thing (but it was)
+              </p>
             </div>
           </div>
 
