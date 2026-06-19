@@ -3,21 +3,22 @@ const base = import.meta.env.BASE_URL
 function VerticalVenn() {
   return (
     <div className="venn-vertical" aria-hidden="true">
-      <img
-        src={`${base}assets/venn-top.svg`}
-        alt=""
-        className="venn-vertical__top"
-      />
-      <img
-        src={`${base}assets/venn-bottom.svg`}
-        alt=""
-        className="venn-vertical__bottom"
-      />
-      <span className="venn-vertical__emoji">👨‍🦰</span>
+      <div className="venn-vertical__circle venn-vertical__circle--top">
+        <img src={`${base}assets/venn-top.svg`} alt="" />
+      </div>
+      <div className="venn-vertical__circle venn-vertical__circle--bottom">
+        <img src={`${base}assets/venn-bottom.svg`} alt="" />
+      </div>
+
       <span className="venn-vertical__label venn-vertical__label--design">
         Design
       </span>
-      <span className="venn-vertical__label venn-vertical__label--me">Me!</span>
+
+      <div className="venn-vertical__center">
+        <span className="venn-vertical__emoji">👨‍🦰</span>
+        <span className="venn-vertical__label venn-vertical__label--me">Me!</span>
+      </div>
+
       <span className="venn-vertical__label venn-vertical__label--growth">
         Growth
       </span>

@@ -316,64 +316,88 @@
   .venn-vertical {
     position: relative;
     flex-shrink: 0;
-    width: 200px;
-    height: 314px;
+    width: 238px;
+    height: 375px;
   }
 
-  .venn-vertical__top,
-  .venn-vertical__bottom {
+  .venn-vertical__circle {
     position: absolute;
-    left: 50%;
-    width: 156px;
-    height: 200px;
-    margin-left: -78px;
+    left: 0;
+    display: flex;
+    width: 238px;
+    height: 186px;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
   }
 
-  .venn-vertical__top {
+  .venn-vertical__circle img {
+    display: block;
+    width: 186px;
+    height: 238px;
+    max-width: none;
+  }
+
+  .venn-vertical__circle--top {
     top: 0;
+  }
+
+  .venn-vertical__circle--top img {
     transform: rotate(90deg);
-    transform-origin: center center;
   }
 
-  .venn-vertical__bottom {
-    top: 158px;
+  .venn-vertical__circle--bottom {
+    top: 188px;
+  }
+
+  .venn-vertical__circle--bottom img {
     transform: rotate(-90deg);
-    transform-origin: center center;
-  }
-
-  .venn-vertical__emoji {
-    position: absolute;
-    top: 144px;
-    left: 94px;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    line-height: 1;
-    z-index: 2;
   }
 
   .venn-vertical__label {
     position: absolute;
     left: 50%;
+    z-index: 2;
+    width: 62px;
     transform: translateX(-50%);
-    font-size: 10.5px;
-    font-weight: 900;
-    line-height: 1;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
     color: var(--color-ink);
     text-align: center;
-    white-space: nowrap;
-    z-index: 2;
   }
 
   .venn-vertical__label--design {
-    top: 72px;
-  }
-
-  .venn-vertical__label--me {
-    top: 172px;
+    top: 62px;
   }
 
   .venn-vertical__label--growth {
-    top: 240px;
+    top: 291px;
+  }
+
+  .venn-vertical__center {
+    position: absolute;
+    top: 152px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    width: 62px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .venn-vertical__emoji {
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .venn-vertical__label--me {
+    position: static;
+    width: 100%;
+    transform: none;
   }
 
   .card-row {
