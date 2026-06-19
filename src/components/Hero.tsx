@@ -15,18 +15,34 @@ function Portrait() {
 function ChatBubble() {
   return (
     <div className="hero-bubble" aria-hidden="true">
-      <svg
-        className="hero-bubble__shape"
-        viewBox="0 0 132 58"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path d="M22 0h89a15 15 0 0 1 15 15v20a15 15 0 0 1-15 15H28.2c-3.1 0-6-1.5-7.8-4L0 58l10.4-12.6C6.8 42.5 5 38.4 5 34V15A15 15 0 0 1 20 0h2z" />
-      </svg>
-      <p className="hero-bubble__text">
-        <span>Nice to</span>
-        <span>meet ya!</span>
-      </p>
+      <div className="hero-bubble__row">
+        <div className="hero-bubble__rail hero-bubble__rail--left">
+          <div className="hero-bubble__cap hero-bubble__cap--tl" />
+          <div className="hero-bubble__edge" />
+          <svg
+            className="hero-bubble__tail"
+            viewBox="0 0 19.4595 19.1517"
+            aria-hidden="true"
+          >
+            <path d="M19.1957 0.26382V18.8878C16.0791 18.8878 13.2211 17.7802 10.9945 15.9367C8.7733 17.4164 5.21248 18.8245 0.909546 18.0421C2.09474 17.5342 6.66577 14.486 6.49646 8.39077C6.51667 8.41856 6.54 8.4443 6.56189 8.47085C6.40893 7.67757 6.32753 6.85859 6.32751 6.02066V0.26382H19.1957Z" />
+          </svg>
+        </div>
+
+        <div className="hero-bubble__body">
+          <p className="hero-bubble__text">
+            <span>Nice to</span>
+            <span>meet ya!</span>
+          </p>
+        </div>
+
+        <div className="hero-bubble__rail hero-bubble__rail--right">
+          <div className="hero-bubble__rail-flip">
+            <div className="hero-bubble__cap hero-bubble__cap--tl" />
+            <div className="hero-bubble__edge" />
+            <div className="hero-bubble__cap hero-bubble__cap--tl" />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
