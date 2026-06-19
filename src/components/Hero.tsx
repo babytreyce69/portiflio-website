@@ -1,66 +1,51 @@
-import type { ReactNode } from 'react'
+import Pill from './Pill'
 
-function OvalPortrait({ flipped = false }: { flipped?: boolean }) {
-  const base = import.meta.env.BASE_URL
+const base = import.meta.env.BASE_URL
+
+function Portrait() {
   return (
-    <div
-      className="relative shrink-0 overflow-hidden rounded-[200px] border-[3px] border-[#8e8e93] bg-white"
-      style={{
-        width: 177,
-        height: 241,
-        transform: flipped ? 'scaleX(-1)' : undefined,
-      }}
-    >
-      <img
-        src={`${base}assets/treyce-bg.png`}
-        alt=""
-        aria-hidden="true"
-        className="absolute left-[-64.81%] top-[-19.95%] h-[112.59%] w-[230.25%] max-w-none object-cover"
-      />
+    <div className="portrait">
       <img
         src={`${base}assets/treyce-portrait.png`}
-        alt={flipped ? '' : 'Treyce Meredith'}
-        aria-hidden={flipped}
-        className="absolute inset-0 top-[-1.59%] h-[110.03%] w-full max-w-none object-cover"
+        alt="Treyce Meredith"
+        className="portrait__image"
       />
     </div>
   )
 }
 
-function ChatBubble({ children }: { children: ReactNode }) {
-  return <div className="chat-bubble">{children}</div>
+function ChatBubble() {
+  return (
+    <div className="hero-bubble" aria-hidden="true">
+      <img
+        src={`${base}assets/chat-bubble-tail.svg`}
+        alt=""
+        className="hero-bubble__tail"
+      />
+      <span className="hero-bubble__body">Nice to meet ya!</span>
+    </div>
+  )
 }
 
 export default function Hero() {
   return (
     <section id="hero" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
-      <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8 px-6 py-10 sm:px-10 lg:flex-row lg:items-start lg:gap-6 lg:px-10 lg:py-[40px]">
-        <div className="flex min-w-0 flex-1 flex-col gap-4 lg:max-w-[360px] lg:pt-8">
-          <span className="text-[64px] leading-none" aria-hidden="true">
-            👉
-          </span>
-          <h1 className="header">This is Treyce</h1>
-          <p className="body-copy">
-            You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it funny....
-            It&rsquo;s a long story
-          </p>
-        </div>
+      <div className="section-inner py-24 lg:py-28">
+        <div className="hero-layout">
+          <div className="hero-visual">
+            <Portrait />
+            <ChatBubble />
+          </div>
 
-        <div
-          className="relative mx-auto shrink-0 lg:mx-0"
-          style={{ width: 447, height: 291 }}
-        >
-          <div className="absolute left-4 top-0">
-            <OvalPortrait />
-          </div>
-          <div className="absolute" style={{ left: 270, top: 50 }}>
-            <OvalPortrait flipped />
-          </div>
-          <div className="absolute z-10" style={{ left: 144, top: 38 }}>
-            <ChatBubble>Hi Treyce</ChatBubble>
-          </div>
-          <div className="absolute z-10" style={{ left: 228, top: 196 }}>
-            <ChatBubble>Oh hey Treyce</ChatBubble>
+          <div className="hero-copy">
+            <Pill className="mb-[14px]">Welcome friends!!!</Pill>
+            <h1 className="header mb-[8px]">This is Treyce</h1>
+            <div className="body-copy max-w-[369px]">
+              <p className="mb-0">
+                You pronounce it &ldquo;Trace&rdquo;. Yes his parents spelled it funny....
+              </p>
+              <p>It&rsquo;s a long story</p>
+            </div>
           </div>
         </div>
       </div>

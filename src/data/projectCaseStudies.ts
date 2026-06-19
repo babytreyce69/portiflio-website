@@ -14,7 +14,7 @@ export const projectCaseStudies: CaseStudy[] = [
   {
     id: 'mercury',
     tag: 'Mercury',
-    title: 'Mobile Web Onboarding',
+    title: 'Mobile Onboarding Redesign',
     intro:
       'Over two years, Treyce led mobile web onboarding for Mercury — improving conversion across signup, verification, and banking application submission flows.',
     blocks: [
@@ -48,7 +48,7 @@ export const projectCaseStudies: CaseStudy[] = [
   {
     id: 'dropbox',
     tag: 'Dropbox',
-    title: 'Individual > Business Upsells',
+    title: 'Individual to Teams Upsells',
     intro:
       'Treyce designed a comprehensive upsell strategy to help individual Dropbox users discover, try, and buy team plans.',
     blocks: [

@@ -1,87 +1,32 @@
-const businesses = ['Mercury', 'Dropbox', 'OpenTable', 'Life360'] as const
-
-import { ButtonLink } from './Button'
-import Pill, { PillLink } from './Pill'
+import FeatureCard from './FeatureCard'
+import Pill from './Pill'
 
 export default function CareerHighlights() {
-  const base = import.meta.env.BASE_URL
-
   return (
     <section id="highlights" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
-      <div className="mx-auto w-full max-w-[1000px] px-6 py-10 sm:px-10 lg:px-10">
-        <header className="mb-8 flex max-w-[739px] flex-col gap-2">
-          <h2 className="header">Treyce has done some pretty cool stuff</h2>
-          <p className="body-copy">
-            He has been a product designer for 10+ years (He&apos;s sorta proud and
-            sorta embraced about that it&apos;s a really long time)
-          </p>
-          <ButtonLink
-            href="https://www.linkedin.com/in/treycemeredith/"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2"
-          >
-            Visit Linkedin
-          </ButtonLink>
-        </header>
+      <div className="section-inner py-16 lg:py-20">
+        <Pill className="mb-[22px]">Notable things</Pill>
+        <h2 className="header mb-10">Hes done some cool stuff</h2>
 
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
-          <div className="card w-full p-6 lg:max-w-[460px] lg:shrink-0">
-            <Pill onCard>Treyce has grown these businesses</Pill>
-            <ul className="mt-2 flex flex-col">
-              {businesses.map((name, i) => (
-                <li
-                  key={name}
-                  className={`flex items-center justify-between py-4 ${
-                    i < businesses.length - 1 ? 'border-b border-black/10' : ''
-                  }`}
-                >
-                  <span className="body-copy">{name}</span>
-                  <div
-                    className="h-[34px] w-[34px] shrink-0 rounded bg-black/5"
-                    aria-hidden="true"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4">
-            <div className="card relative min-h-[200px] shrink-0 overflow-hidden p-6 lg:min-h-[166px]">
-              <div className="relative z-10 max-w-[55%]">
-                <Pill onCard>He spoke at</Pill>
-                <p className="body-copy mt-2">Config 2022</p>
-                <PillLink
-                  href="https://www.youtube.com/watch?v=3aH--S3r9n4"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6"
-                >
-                  Watch his talk
-                </PillLink>
-              </div>
-              <img
-                src={`${base}assets/card-screenshot.png`}
-                alt="Treyce speaking at Config 2022"
-                className="absolute right-0 top-0 h-full w-[min(243px,45%)] object-cover"
-              />
-            </div>
-
-            <div className="card flex flex-col p-6 lg:min-h-0 lg:flex-1">
-              <Pill onCard>Hes great at growth</Pill>
-              <p className="body-copy mt-2">
-                Most recently he 2X Banking Application Submissions at Mercury
-              </p>
-              <PillLink
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6"
-              >
-                See case study
-              </PillLink>
-            </div>
-          </div>
+        <div className="card-row">
+          <FeatureCard
+            label="He works at"
+            title="Mercury"
+            action="Learn more"
+            href="https://mercury.com"
+          />
+          <FeatureCard
+            label="He spoke at"
+            title="Config"
+            action="Watch talk"
+            href="https://www.youtube.com/watch?v=3aH--S3r9n4"
+          />
+          <FeatureCard
+            label="He worked at"
+            title="Dropbox"
+            action="Learn more"
+            href="https://www.dropbox.com"
+          />
         </div>
       </div>
     </section>
