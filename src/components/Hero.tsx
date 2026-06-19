@@ -15,12 +15,18 @@ function Portrait() {
 function ChatBubble() {
   return (
     <div className="hero-bubble" aria-hidden="true">
-      <img
-        src={`${base}assets/chat-bubble-tail.svg`}
-        alt=""
-        className="hero-bubble__tail"
-      />
-      <span className="hero-bubble__body">Nice to meet ya!</span>
+      <svg
+        className="hero-bubble__shape"
+        viewBox="0 0 132 58"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path d="M22 0h89a15 15 0 0 1 15 15v20a15 15 0 0 1-15 15H28.2c-3.1 0-6-1.5-7.8-4L0 58l10.4-12.6C6.8 42.5 5 38.4 5 34V15A15 15 0 0 1 20 0h2z" />
+      </svg>
+      <p className="hero-bubble__text">
+        <span>Nice to</span>
+        <span>meet ya!</span>
+      </p>
     </div>
   )
 }
