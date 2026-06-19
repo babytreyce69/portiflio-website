@@ -2,14 +2,133 @@
 @import 'animate.css';
 
 @theme {
-  --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Google Sans', ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #140018;
-  --color-forest: #033017;
-  --color-card: #21452d;
-  --color-cream: #f2f0e6;
+  /* Figma style sheet (node 60-1767) */
+  --color-primary: #0040ea;
+  --color-secondary: #f3f3f3;
+  --color-ink: #000000;
+  --color-surface: #ffffff;
   --color-placeholder: #d9d9d9;
   --color-placeholder-dark: #b4b4b4;
+
+  --radius-pill: 2px;
+  --radius-button: 2px;
+  --radius-card: 2px;
+}
+
+/*
+ * Named styles — use these when requesting changes:
+ * header | body-copy | pill | pill-on-card | button | card | canvas
+ */
+@layer components {
+  .canvas {
+    background-color: var(--color-surface);
+  }
+
+  .header {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+
+  .body-copy {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.375;
+    color: var(--color-ink);
+  }
+
+  .pill {
+    display: inline-flex;
+    width: fit-content;
+    align-self: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-secondary);
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-ink);
+    cursor: default;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  a.pill {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .pill:hover,
+  a.pill:hover {
+    background-color: var(--color-ink);
+    color: var(--color-surface);
+    border-color: var(--color-ink);
+  }
+
+  /* Card labels — body copy only, no box */
+  .pill-on-card {
+    display: inline-flex;
+    width: fit-content;
+    align-self: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+
+  .button {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-button);
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-secondary);
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .button:hover {
+    background-color: var(--color-ink);
+    color: var(--color-surface);
+    border-color: var(--color-ink);
+  }
+
+  .card {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-surface);
+  }
+
+  .chat-bubble {
+    display: inline-block;
+    border-radius: 16px;
+    background-color: var(--color-primary);
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-surface);
+  }
 }
 
 html,
@@ -18,20 +137,26 @@ body,
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: #fff;
+  background: var(--color-surface);
 }
 
 body {
-  font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Google Sans', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/*
- * Desktop (lg+): one scroll gesture = one section (Neon-style snap).
- * Snap on the document scroll — avoids trapping overflow on body (blank page bug).
- */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
 @media (min-width: 1024px) {
   html {
     scroll-snap-type: y mandatory;
@@ -93,30 +218,5 @@ html.modal-open {
 @media (min-width: 1024px) {
   html.modal-open {
     scroll-snap-type: none;
-  }
-}
-
-/*
- * Hover-on-a-word kinetic type powered by animate.css keyframes
- * (https://animate.style/). Each word sets its own animation via
- * --hover-anim, e.g. bounce, tada, rubberBand, jello, swing, wobble,
- * headShake, pulse, heartBeat, flash.
- */
-.hover-word {
-  --hover-anim: bounce;
-  --hover-duration: 0.6s;
-  cursor: default;
-  display: inline-block;
-  transform-origin: 50% 100%;
-  backface-visibility: hidden;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hover-word:hover {
-    animation-name: var(--hover-anim);
-    animation-duration: var(--hover-duration);
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: both;
-    animation-iteration-count: 1;
   }
 }
