@@ -317,18 +317,17 @@
     position: relative;
     flex-shrink: 0;
     width: 238px;
-    height: 286px;
+    height: 375px;
   }
 
   .venn-vertical__circle {
     position: absolute;
-    left: 50%;
+    left: 0;
     display: flex;
-    width: 186px;
-    height: 238px;
+    width: 238px;
+    height: 186px;
     align-items: center;
     justify-content: center;
-    margin-left: -93px;
     pointer-events: none;
   }
 
@@ -348,7 +347,7 @@
   }
 
   .venn-vertical__circle--bottom {
-    top: 88px;
+    top: 188px;
   }
 
   .venn-vertical__circle--bottom img {
@@ -369,16 +368,16 @@
   }
 
   .venn-vertical__label--design {
-    top: 48px;
+    top: 62px;
   }
 
   .venn-vertical__label--growth {
-    top: 228px;
+    top: 291px;
   }
 
   .venn-vertical__center {
     position: absolute;
-    top: 138px;
+    top: 152px;
     left: 50%;
     z-index: 2;
     display: flex;
