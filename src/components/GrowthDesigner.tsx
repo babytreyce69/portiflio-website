@@ -100,7 +100,7 @@ const GROWTH_LABEL_X = (RIGHT_LOBE_INNER_X + (CX_RIGHT + R)) / 2 - 4
 
 export default function GrowthDesigner() {
   return (
-    <section className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
+    <section id="growth" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center gap-10 px-6 py-10 sm:px-10 lg:flex-row lg:items-center lg:gap-12 lg:px-10">
         <div className="flex max-w-[390px] flex-col gap-4">
           <h2 className="header">He is a Growth Designer</h2>

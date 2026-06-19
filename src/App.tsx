@@ -1,3 +1,4 @@
+import FloatingNav from './components/FloatingNav'
 import Hero from './components/Hero'
 import GrowthDesigner from './components/GrowthDesigner'
 import CareerHighlights from './components/CareerHighlights'
@@ -6,13 +7,16 @@ import GridOverlay from './components/GridOverlay'
 
 function App() {
   return (
-    <main className="canvas min-h-screen font-sans">
-      <Hero />
-      <GrowthDesigner />
-      <CareerHighlights />
-      <SelectedProjects />
-      {import.meta.env.DEV && <GridOverlay />}
-    </main>
+    <>
+      <FloatingNav />
+      <main className="canvas min-h-screen font-sans">
+        <Hero />
+        <GrowthDesigner />
+        <CareerHighlights />
+        <SelectedProjects />
+        {import.meta.env.DEV && <GridOverlay />}
+      </main>
+    </>
   )
 }
 

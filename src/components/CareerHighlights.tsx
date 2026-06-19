@@ -7,7 +7,7 @@ export default function CareerHighlights() {
   const base = import.meta.env.BASE_URL
 
   return (
-    <section className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
+    <section id="highlights" className="canvas snap-section lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto w-full max-w-[1000px] px-6 py-10 sm:px-10 lg:px-10">
         <header className="mb-8 flex max-w-[739px] flex-col gap-2">
           <h2 className="header">Treyce has done some pretty cool stuff</h2>
