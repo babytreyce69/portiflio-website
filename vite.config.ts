@@ -6,4 +6,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig(({ command }) => ({
   plugins: [react(), tailwindcss()],
   base: command === 'build' ? '/portiflio-website/' : '/',
+  server: {
+    host: true,
+    allowedHosts: true,
+  },
 }))
