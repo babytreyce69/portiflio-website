@@ -1,21 +1,21 @@
-import FloatingNav from './components/FloatingNav'
-import Hero from './components/Hero'
-import GrowthDesigner from './components/GrowthDesigner'
-import CareerHighlights from './components/CareerHighlights'
-import SelectedProjects from './components/SelectedProjects'
-import GridOverlay from './components/GridOverlay'
+import { useState } from 'react'
+import BioColumn from './components/BioColumn'
+import CardColumn from './components/CardColumn'
+import PlaceholderModal from './components/PlaceholderModal'
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
     <>
-      <FloatingNav />
-      <main className="canvas min-h-screen font-sans">
-        <Hero />
-        <GrowthDesigner />
-        <CareerHighlights />
-        <SelectedProjects />
-        {import.meta.env.DEV && <GridOverlay />}
+      <main className="layout">
+        <CardColumn onOpen={() => setModalOpen(true)} />
+        <BioColumn onOpen={() => setModalOpen(true)} />
       </main>
+
+      {modalOpen ? (
+        <PlaceholderModal onClose={() => setModalOpen(false)} />
+      ) : null}
     </>
   )
 }
