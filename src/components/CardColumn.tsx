@@ -24,11 +24,11 @@ function PlaceholderCard({
 export default function CardColumn({ onOpen }: CardColumnProps) {
   return (
     <div className="card-column">
-      <div className="snap-row">
+      <div>
         <PlaceholderCard variant="wide" onOpen={onOpen} label="project 1" />
       </div>
 
-      <div className="snap-row card-row">
+      <div className="card-row">
         <PlaceholderCard variant="tall" onOpen={onOpen} label="project 2" />
         <PlaceholderCard variant="tall" onOpen={onOpen} label="project 3" />
       </div>

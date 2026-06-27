@@ -23,7 +23,6 @@
 :root {
   --card-hero-ratio: 501 / 335;
   --card-tall-ratio: 243 / 335;
-  --card-row-height: 360px;
   --site-padding-x: 24px;
   --site-padding-top: 39px;
   --masthead-gap: 24px;
@@ -33,7 +32,6 @@
   :root {
     --card-hero-ratio: 501 / 335;
     --card-tall-ratio: 243 / 201;
-    --card-row-height: 360px;
     --site-padding-x: 48px;
   }
 }
@@ -42,7 +40,6 @@
   :root {
     --card-hero-ratio: 714 / 407;
     --card-tall-ratio: 348 / 201;
-    --card-row-height: 440px;
     --site-padding-x: 80px;
   }
 }
@@ -51,7 +48,6 @@
   :root {
     --card-hero-ratio: 820 / 407;
     --card-tall-ratio: 402 / 322;
-    --card-row-height: 480px;
     --site-padding-x: 100px;
   }
 }
@@ -155,18 +151,11 @@ body {
     overflow: visible;
   }
 
-  /* Left column: scrolls with the document, holds the snap rows. */
+  /* Left column: scrolls with the document. */
   .card-column {
     display: flex;
     flex-direction: column;
     gap: var(--col-gap);
-  }
-
-  @media (min-width: 1000px) {
-    .card-column {
-      /* Extra room so the last row can scroll up to the top of the page. */
-      padding-bottom: calc(100dvh - var(--card-row-height));
-    }
   }
 
   /* Right column: static, pinned while the page scrolls. */
@@ -349,27 +338,6 @@ body {
   }
 }
 
-/* ---------- Snap: only the left column rows ---------- */
-@media (min-width: 1000px) {
-  html {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
-    scroll-padding-top: 0;
-  }
-
-  .snap-row {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-}
-
-@media (min-width: 1000px) and (prefers-reduced-motion: reduce) {
-  html {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-  }
-}
-
 /* ---------- Modal slide animation ---------- */
 @keyframes app-modal-slide-up {
   from {
@@ -407,10 +375,4 @@ body {
 
 html.modal-open {
   overflow: hidden;
-}
-
-@media (min-width: 1000px) {
-  html.modal-open {
-    scroll-snap-type: none;
-  }
 }
