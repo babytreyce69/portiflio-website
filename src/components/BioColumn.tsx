@@ -6,11 +6,26 @@ const experience = [
 
 function Pill({
   children,
+  href,
   onClick,
 }: {
   children: React.ReactNode
-  onClick: () => void
+  href?: string
+  onClick?: () => void
 }) {
+  if (href) {
+    return (
+      <a
+        className="pill"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    )
+  }
+
   return (
     <button type="button" className="pill" onClick={onClick}>
       {children}
@@ -69,7 +84,7 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
 
         <p>
           Currently Treyce is a leading activation at{' '}
-          <Pill onClick={onOpen}>Mercury</Pill>
+          <Pill href="https://mercury.com/">Mercury</Pill>
         </p>
       </div>
 
@@ -79,7 +94,7 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
 
       <div className="flex items-center justify-between gap-4">
         <span className="bio-body">Pervious Experience</span>
-        <Pill onClick={onOpen}>See more</Pill>
+        <Pill href="https://www.linkedin.com/in/treycemeredith/">See more</Pill>
       </div>
 
       <div className="mt-4 flex flex-col">
