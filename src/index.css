@@ -192,11 +192,17 @@ body {
     color: var(--color-ink);
   }
 
-  /* ---------- Wave divider ---------- */
+  /* ---------- Wave divider (Figma node 76:1604) ---------- */
+  .wave-wrap {
+    margin-block: 20px;
+    color: var(--color-cream);
+  }
+
   .wave {
     display: block;
     width: 100%;
-    height: auto;
+    height: 18px;
+    overflow: visible;
   }
 
   /* ---------- Experience table ---------- */
