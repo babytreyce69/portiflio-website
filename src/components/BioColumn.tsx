@@ -94,7 +94,7 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
 
       <div className="flex items-center justify-between gap-4">
         <span className="bio-body">Pervious Experience</span>
-        <Pill href="https://www.linkedin.com/in/treycemeredith/">See more</Pill>
+        <Pill href="https://www.linkedin.com/in/treycemeredith">See more</Pill>
       </div>
 
       <div className="mt-4 flex flex-col">
