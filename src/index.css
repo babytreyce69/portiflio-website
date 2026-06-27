@@ -11,14 +11,49 @@
   --radius-card: 12px;
   --radius-pill: 12px;
 
-  --site-max-width: 760px;
   --col-gap: 16px;
+
+  /* Figma breakpoints: MacBook Pro 1000 / MacBook Air 1280 / Desktop 1440 */
+  --bp-tablet: 1000px;
+  --bp-laptop: 1280px;
+  --bp-desktop: 1440px;
 }
 
-/* Approx height of one card row; used to give the page enough scroll room
-   so each row can snap its top to the top of the viewport. */
+/* Card aspect ratios per breakpoint (Figma node 77-1655) */
 :root {
-  --card-row-height: 320px;
+  --card-hero-ratio: 501 / 335;
+  --card-tall-ratio: 243 / 335;
+  --card-row-height: 360px;
+  --site-padding-x: 24px;
+  --site-padding-top: 39px;
+  --masthead-gap: 24px;
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --card-hero-ratio: 501 / 335;
+    --card-tall-ratio: 243 / 201;
+    --card-row-height: 360px;
+    --site-padding-x: 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --card-hero-ratio: 714 / 407;
+    --card-tall-ratio: 348 / 201;
+    --card-row-height: 440px;
+    --site-padding-x: 80px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --card-hero-ratio: 820 / 407;
+    --card-tall-ratio: 402 / 322;
+    --card-row-height: 480px;
+    --site-padding-x: 100px;
+  }
 }
 
 html,
@@ -53,18 +88,71 @@ body {
   .layout {
     box-sizing: border-box;
     width: 100%;
-    max-width: calc(var(--site-max-width) + 48px);
     margin-inline: auto;
-    padding: 38px 24px 0;
+    padding: var(--site-padding-top) var(--site-padding-x) 0;
   }
 
-  @media (min-width: 768px) {
+  .layout__masthead {
+    display: flex;
+    flex-direction: column;
+    gap: var(--masthead-gap);
+    margin-bottom: var(--col-gap);
+  }
+
+  @media (min-width: 1000px) {
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
       column-gap: var(--col-gap);
       align-items: start;
     }
+
+    .layout__masthead {
+      grid-column: 1 / -1;
+      margin-bottom: calc(var(--col-gap) + 8px);
+    }
+  }
+
+  /* ---------- Site header ---------- */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-header__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-cream);
+  }
+
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .site-header__icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ---------- Top wave strip ---------- */
+  .wave-strip {
+    color: var(--color-cream);
+    width: 100%;
+  }
+
+  .wave-strip__svg {
+    display: block;
+    width: 100%;
+    height: 18px;
+    overflow: visible;
   }
 
   /* Left column: scrolls with the document, holds the snap rows. */
@@ -74,7 +162,7 @@ body {
     gap: var(--col-gap);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     .card-column {
       /* Extra room so the last row can scroll up to the top of the page. */
       padding-bottom: calc(100dvh - var(--card-row-height));
@@ -83,15 +171,15 @@ body {
 
   /* Right column: static, pinned while the page scrolls. */
   .bio-column {
-    margin-top: 40px;
+    margin-top: 32px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     .bio-column {
       position: sticky;
-      top: 38px;
+      top: var(--site-padding-top);
       align-self: start;
-      max-height: calc(100dvh - 38px);
+      max-height: calc(100dvh - var(--site-padding-top));
       overflow-y: auto;
       margin-top: 0;
     }
@@ -128,11 +216,28 @@ body {
   }
 
   .card--wide {
-    aspect-ratio: 501 / 335;
+    aspect-ratio: var(--card-hero-ratio);
   }
 
   .card--tall {
-    aspect-ratio: 243 / 335;
+    aspect-ratio: var(--card-tall-ratio);
+  }
+
+  .pill--filled {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    gap: 10px;
+    padding-inline: 8px;
+  }
+
+  .pill--filled:hover {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    opacity: 0.9;
+  }
+
+  .pill--icon {
+    padding-inline: 8px;
   }
 
   /* ---------- Bio typography ---------- */
@@ -245,7 +350,7 @@ body {
 }
 
 /* ---------- Snap: only the left column rows ---------- */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   html {
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
@@ -258,7 +363,7 @@ body {
   }
 }
 
-@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
+@media (min-width: 1000px) and (prefers-reduced-motion: reduce) {
   html {
     scroll-snap-type: none;
     scroll-behavior: auto;
@@ -304,7 +409,7 @@ html.modal-open {
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   html.modal-open {
     scroll-snap-type: none;
   }

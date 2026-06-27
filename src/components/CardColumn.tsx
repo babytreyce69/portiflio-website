@@ -32,11 +32,6 @@ export default function CardColumn({ onOpen }: CardColumnProps) {
         <PlaceholderCard variant="tall" onOpen={onOpen} label="project 2" />
         <PlaceholderCard variant="tall" onOpen={onOpen} label="project 3" />
       </div>
-
-      <div className="snap-row card-row">
-        <PlaceholderCard variant="tall" onOpen={onOpen} label="project 4" />
-        <PlaceholderCard variant="tall" onOpen={onOpen} label="project 5" />
-      </div>
     </div>
   )
 }
