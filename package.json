@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "preview:cloud": "vite preview --host 0.0.0.0 --port 5173",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
