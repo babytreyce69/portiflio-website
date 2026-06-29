@@ -168,6 +168,8 @@ body {
   /* Right column: static, pinned while the page scrolls. */
   .bio-column {
     margin-top: 32px;
+    width: 100%;
+    max-width: 100%;
   }
 
   @media (min-width: 1000px) {
@@ -178,6 +180,19 @@ body {
       max-height: calc(100dvh - var(--site-padding-top));
       overflow-y: auto;
       margin-top: 0;
+      max-width: 231px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .bio-column {
+      max-width: 344px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .bio-column {
+      max-width: 403px;
     }
   }
 
@@ -257,21 +272,34 @@ body {
     margin: 0;
   }
 
-  .bio-intro--compact {
+  /* Per-breakpoint copy blocks (Figma 76:1672 / 76:1812 / 76:1811) */
+  .bio-copy--air,
+  .bio-copy--desktop {
     display: none;
   }
 
-  .bio-intro--stacked {
+  .bio-copy--pro {
     display: block;
   }
 
   @media (min-width: 1280px) {
-    .bio-intro--compact {
-      display: block;
+    .bio-copy--pro,
+    .bio-copy--desktop {
+      display: none;
     }
 
-    .bio-intro--stacked {
+    .bio-copy--air {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .bio-copy--air {
       display: none;
+    }
+
+    .bio-copy--desktop {
+      display: block;
     }
   }
 
@@ -280,16 +308,6 @@ body {
     line-height: var(--leading-body);
     visibility: hidden;
     user-select: none;
-  }
-
-  .bio-mercury-line {
-    display: block;
-  }
-
-  @media (min-width: 1280px) {
-    .bio-mercury-suffix {
-      display: block;
-    }
   }
 
   .bio-small {

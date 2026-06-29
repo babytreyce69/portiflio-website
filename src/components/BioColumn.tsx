@@ -66,42 +66,72 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
       <h1 className="bio-title">Treyce Is a Growth Designer</h1>
 
       <div className="bio-body">
-        <div className="bio-intro bio-intro--compact">
-          <p>
-            You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it
-            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
-          </p>
-        </div>
-
-        <div className="bio-intro bio-intro--stacked">
+        {/* MacBook Pro 1000 — stacked lines (Figma 76:1672) */}
+        <div className="bio-copy bio-copy--pro">
           <p>You pronounce it &ldquo;Trace&rdquo;</p>
           <p>Yes his parents spelled</p>
           <p>
             it funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
           </p>
+          <p className="bio-spacer" aria-hidden="true">
+            &nbsp;
+          </p>
+          <p>
+            Treyce has been doing growth design for 10 years Before it was even
+            really a thing (but it was).
+          </p>
+          <p className="bio-spacer" aria-hidden="true">
+            &nbsp;
+          </p>
+          <p>
+            Currently Treyce is a leading activation at{' '}
+            <Pill href="https://mercury.com/">Mercury</Pill>
+          </p>
         </div>
 
-        <p className="bio-spacer" aria-hidden="true">
-          &nbsp;
-        </p>
-
-        <p>
-          Treyce has been doing growth design for 10 years Before it was even
-          really a thing (but it was).
-        </p>
-
-        <p className="bio-spacer" aria-hidden="true">
-          &nbsp;
-        </p>
-
-        <p className="bio-mercury-line">
-          <span className="bio-mercury-prefix">
-            Currently Treyce is a leading activation
-          </span>{' '}
-          <span className="bio-mercury-suffix">
+        {/* MacBook Air 1280 — single intro line, split mercury (Figma 76:1812 / 77:1632) */}
+        <div className="bio-copy bio-copy--air">
+          <p>
+            You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it
+            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
+          </p>
+          <p className="bio-spacer" aria-hidden="true">
+            &nbsp;
+          </p>
+          <p>
+            Treyce has been doing growth design for 10 years Before it was even
+            really a thing (but it was).
+          </p>
+          <p className="bio-spacer" aria-hidden="true">
+            &nbsp;
+          </p>
+          <p>Currently Treyce is a leading activation</p>
+          <p>
             at <Pill href="https://mercury.com/">Mercury</Pill>
-          </span>
-        </p>
+          </p>
+        </div>
+
+        {/* Desktop 1440 — comma after Trace (Figma 76:1811) */}
+        <div className="bio-copy bio-copy--desktop">
+          <p>You pronounce it &ldquo;Trace&rdquo;, Yes his parents spelled</p>
+          <p>
+            it funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
+          </p>
+          <p className="bio-spacer" aria-hidden="true">
+            &nbsp;
+          </p>
+          <p>
+            Treyce has been doing growth design for 10 years Before it was even
+            really a thing (but it was).
+          </p>
+          <p className="bio-spacer" aria-hidden="true">
+            &nbsp;
+          </p>
+          <p>
+            Currently Treyce is a leading activation at{' '}
+            <Pill href="https://mercury.com/">Mercury</Pill>
+          </p>
+        </div>
       </div>
 
       <div className="wave-wrap wave-wrap--bio">
@@ -109,7 +139,7 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
       </div>
 
       <div className="bio-exp-header">
-        <span className="bio-body">Pervious Experience</span>
+        <span>Pervious Experience</span>
         <Pill href="https://www.linkedin.com/in/treycemeredith">See more</Pill>
       </div>
 
