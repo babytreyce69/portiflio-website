@@ -66,12 +66,11 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
       <h1 className="bio-title">Treyce Is a Growth Designer</h1>
 
       <div className="bio-body">
-        {/* MacBook Pro 1000 — stacked lines (Figma 76:1672) */}
+        {/* 1000–1279 — flowing intro, mercury on one line */}
         <div className="bio-copy bio-copy--pro">
-          <p>You pronounce it &ldquo;Trace&rdquo;</p>
-          <p>Yes his parents spelled</p>
           <p>
-            it funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
+            You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it
+            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
           </p>
           <p className="bio-spacer" aria-hidden="true">
             &nbsp;
@@ -111,11 +110,11 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
           </p>
         </div>
 
-        {/* Desktop 1440 — comma after Trace (Figma 76:1811) */}
+        {/* Desktop 1440 — comma after Trace, flowing intro */}
         <div className="bio-copy bio-copy--desktop">
-          <p>You pronounce it &ldquo;Trace&rdquo;, Yes his parents spelled</p>
           <p>
-            it funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
+            You pronounce it &ldquo;Trace&rdquo;, Yes his parents spelled it
+            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
           </p>
           <p className="bio-spacer" aria-hidden="true">
             &nbsp;
