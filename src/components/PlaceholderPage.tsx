@@ -1,18 +1,15 @@
-import type { Page } from '../types/pages'
-
-const labels: Record<Exclude<Page, 'home'>, string> = {
-  profile: 'Profile',
-  favorites: 'Favorites',
-}
+import { PAGE_LABELS, type Page } from '../types/pages'
 
 type PlaceholderPageProps = {
   page: Exclude<Page, 'home'>
 }
 
 export default function PlaceholderPage({ page }: PlaceholderPageProps) {
+  const label = PAGE_LABELS[page]
+
   return (
-    <section className="placeholder-page" aria-label={labels[page]}>
-      <h1 className="placeholder-page__title">{labels[page]}</h1>
+    <section className="placeholder-page" aria-label={label}>
+      <h1 className="placeholder-page__title">{label}</h1>
       <p className="placeholder-page__body">Placeholder</p>
     </section>
   )

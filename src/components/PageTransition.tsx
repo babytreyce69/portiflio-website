@@ -1,27 +1,63 @@
+import { useEffect, useRef, useState } from 'react'
 import type { Page, SlideDirection } from '../types/pages'
 
 type PageTransitionProps = {
   page: Page
   direction: SlideDirection
-  children: React.ReactNode
+  renderPage: (page: Page) => React.ReactNode
 }
 
 export default function PageTransition({
   page,
   direction,
-  children,
+  renderPage,
 }: PageTransitionProps) {
-  const layoutClass =
-    page === 'home'
-      ? 'page-transition page-transition--home'
-      : 'page-transition page-transition--full'
+  const [exiting, setExiting] = useState<Page | null>(null)
+  const previousPage = useRef(page)
+  useEffect(() => {
+    if (page === previousPage.current) return
+
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+
+    if (reduced) {
+      previousPage.current = page
+      setExiting(null)
+      return
+    }
+
+    setExiting(previousPage.current)
+    previousPage.current = page
+  }, [page])
+
+  const transitioning = exiting !== null
+  const exitDirection = direction === 'right' ? 'left' : 'right'
+
+  const clearExit = () => {
+    setExiting(null)
+  }
 
   return (
     <div
-      key={page}
-      className={`${layoutClass} page-transition--from-${direction}`}
+      className={`page-viewport${transitioning ? ' page-viewport--transitioning' : ''}`}
     >
-      {children}
+      {transitioning && exiting !== null ? (
+        <div
+          className={`page-layer page-layer--${exiting} page-layer--exit-${exitDirection}`}
+          onAnimationEnd={clearExit}
+        >
+          {renderPage(exiting)}
+        </div>
+      ) : null}
+
+      <div
+        className={`page-layer page-layer--${page}${
+          transitioning ? ` page-layer--enter-${direction}` : ''
+        }`}
+      >
+        {renderPage(page)}
+      </div>
     </div>
   )
 }

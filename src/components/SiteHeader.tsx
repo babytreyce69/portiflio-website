@@ -1,9 +1,9 @@
-import type { Page } from '../types/pages'
+import { PAGE_LABELS, type Page } from '../types/pages'
 
 function HomeIcon() {
   return (
     <svg
-      className="site-header__icon"
+      className="nav-pill__icon"
       viewBox="0 0 12 12"
       fill="currentColor"
       aria-hidden="true"
@@ -16,7 +16,7 @@ function HomeIcon() {
 function UserIcon() {
   return (
     <svg
-      className="site-header__icon"
+      className="nav-pill__icon"
       viewBox="0 0 12 12"
       fill="currentColor"
       aria-hidden="true"
@@ -29,7 +29,7 @@ function UserIcon() {
 function HeartIcon() {
   return (
     <svg
-      className="site-header__icon"
+      className="nav-pill__icon"
       viewBox="0 0 12 12"
       fill="currentColor"
       aria-hidden="true"
@@ -39,16 +39,18 @@ function HeartIcon() {
   )
 }
 
+const NAV_ITEMS = [
+  { page: 'home', Icon: HomeIcon },
+  { page: 'profile', Icon: UserIcon },
+  { page: 'favorites', Icon: HeartIcon },
+] as const satisfies ReadonlyArray<{
+  page: Page
+  Icon: () => React.JSX.Element
+}>
+
 type SiteHeaderProps = {
   activePage: Page
   onNavigate: (page: Page) => void
-}
-
-function navPillClass(isActive: boolean, isIcon = false) {
-  const classes = ['pill']
-  if (isActive) classes.push('pill--filled')
-  if (isIcon) classes.push('pill--icon')
-  return classes.join(' ')
 }
 
 export default function SiteHeader({ activePage, onNavigate }: SiteHeaderProps) {
@@ -56,33 +58,29 @@ export default function SiteHeader({ activePage, onNavigate }: SiteHeaderProps) 
     <header className="site-header">
       <h2 className="site-header__title">Welcome!</h2>
       <nav className="site-header__nav" aria-label="Site">
-        <button
-          type="button"
-          className={navPillClass(activePage === 'home')}
-          aria-current={activePage === 'home' ? 'page' : undefined}
-          onClick={() => onNavigate('home')}
-        >
-          <HomeIcon />
-          Home
-        </button>
-        <button
-          type="button"
-          className={navPillClass(activePage === 'profile', true)}
-          aria-label="Profile"
-          aria-current={activePage === 'profile' ? 'page' : undefined}
-          onClick={() => onNavigate('profile')}
-        >
-          <UserIcon />
-        </button>
-        <button
-          type="button"
-          className={navPillClass(activePage === 'favorites', true)}
-          aria-label="Favorites"
-          aria-current={activePage === 'favorites' ? 'page' : undefined}
-          onClick={() => onNavigate('favorites')}
-        >
-          <HeartIcon />
-        </button>
+        {NAV_ITEMS.map(({ page, Icon }) => {
+          const isActive = activePage === page
+          const label = PAGE_LABELS[page]
+
+          return (
+            <button
+              key={page}
+              type="button"
+              className={`nav-pill${isActive ? ' nav-pill--active' : ''}`}
+              aria-label={isActive ? undefined : label}
+              aria-current={isActive ? 'page' : undefined}
+              onClick={() => onNavigate(page)}
+            >
+              <Icon />
+              <span
+                className={`nav-pill__label${isActive ? ' nav-pill__label--visible' : ''}`}
+                aria-hidden={!isActive}
+              >
+                {label}
+              </span>
+            </button>
+          )
+        })}
       </nav>
     </header>
   )

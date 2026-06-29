@@ -19,6 +19,22 @@ function App() {
     setPage(next)
   }, [page])
 
+  const renderPage = useCallback(
+    (activePage: Page) => {
+      if (activePage === 'home') {
+        return (
+          <>
+            <CardColumn onOpen={() => setModalOpen(true)} />
+            <BioColumn onOpen={() => setModalOpen(true)} />
+          </>
+        )
+      }
+
+      return <PlaceholderPage page={activePage} />
+    },
+    [],
+  )
+
   return (
     <>
       <main className="layout">
@@ -27,16 +43,7 @@ function App() {
           <WaveStrip />
         </div>
 
-        <PageTransition page={page} direction={direction}>
-          {page === 'home' ? (
-            <>
-              <CardColumn onOpen={() => setModalOpen(true)} />
-              <BioColumn onOpen={() => setModalOpen(true)} />
-            </>
-          ) : (
-            <PlaceholderPage page={page} />
-          )}
-        </PageTransition>
+        <PageTransition page={page} direction={direction} renderPage={renderPage} />
       </main>
 
       {modalOpen ? (
