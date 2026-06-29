@@ -155,7 +155,7 @@ body {
   .wave-line {
     display: block;
     width: 100%;
-    height: 7px;
+    height: 18px;
     overflow: visible;
     color: var(--color-cream);
   }
