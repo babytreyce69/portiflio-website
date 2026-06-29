@@ -151,11 +151,20 @@ body {
     width: 100%;
   }
 
-  .wave-strip__svg {
+  /* ---------- Wave divider (shared tiled pattern) ---------- */
+  .wave-line {
     display: block;
     width: 100%;
-    height: 18px;
+    height: 7px;
     overflow: visible;
+    color: var(--color-cream);
+  }
+
+  .wave-wrap--bio {
+    width: 100%;
+    margin-top: 26px;
+    margin-bottom: 0;
+    color: var(--color-cream);
   }
 
   /* Left column: scrolls with the document. */
@@ -363,24 +372,6 @@ body {
   .pill:hover {
     background-color: var(--color-cream);
     color: var(--color-ink);
-  }
-
-  /* ---------- Wave divider ---------- */
-  .wave-wrap--bio {
-    width: 100%;
-    margin-top: 26px;
-    margin-bottom: 0;
-    color: var(--color-cream);
-  }
-
-  .wave {
-    display: block;
-    width: 100%;
-    overflow: visible;
-  }
-
-  .wave--small {
-    height: 7px;
   }
 
   /* ---------- Experience table ---------- */
