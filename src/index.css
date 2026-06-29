@@ -93,6 +93,7 @@ body {
     width: 100%;
     margin-inline: auto;
     padding: var(--site-padding-top) var(--site-padding-x) 0;
+    overflow-x: clip;
   }
 
   .layout__masthead {
@@ -137,6 +138,10 @@ body {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+  }
+
+  .site-header__nav .pill {
+    appearance: none;
   }
 
   .site-header__icon {
@@ -415,6 +420,51 @@ body {
     background-color: var(--color-ink);
     color: var(--color-cream);
   }
+
+  /* ---------- Page transition ---------- */
+  .page-transition--home {
+    display: contents;
+  }
+
+  .page-transition--full {
+    grid-column: 1 / -1;
+    min-height: 50vh;
+  }
+
+  @media (min-width: 1000px) {
+    .page-transition--full {
+      min-height: calc(100dvh - var(--site-padding-top) - 120px);
+    }
+  }
+
+  /* ---------- Placeholder page ---------- */
+  .placeholder-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: inherit;
+    padding: 48px 0 80px;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    text-align: center;
+  }
+
+  .placeholder-page__title {
+    margin: 0;
+    font-size: var(--text-title);
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .placeholder-page__body {
+    margin: 0;
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: var(--leading-body);
+    opacity: 0.6;
+  }
 }
 
 /* ---------- Modal slide animation ---------- */
@@ -454,4 +504,44 @@ body {
 
 html.modal-open {
   overflow: hidden;
+}
+
+/* ---------- Page slide animation ---------- */
+@keyframes page-slide-in-right {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes page-slide-in-left {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.page-transition--from-right {
+  animation: page-slide-in-right 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.page-transition--from-left {
+  animation: page-slide-in-left 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition--from-right,
+  .page-transition--from-left {
+    animation: none;
+  }
 }

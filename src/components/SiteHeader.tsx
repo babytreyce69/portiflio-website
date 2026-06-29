@@ -1,3 +1,5 @@
+import type { Page } from '../types/pages'
+
 function HomeIcon() {
   return (
     <svg
@@ -37,19 +39,48 @@ function HeartIcon() {
   )
 }
 
-export default function SiteHeader() {
+type SiteHeaderProps = {
+  activePage: Page
+  onNavigate: (page: Page) => void
+}
+
+function navPillClass(isActive: boolean, isIcon = false) {
+  const classes = ['pill']
+  if (isActive) classes.push('pill--filled')
+  if (isIcon) classes.push('pill--icon')
+  return classes.join(' ')
+}
+
+export default function SiteHeader({ activePage, onNavigate }: SiteHeaderProps) {
   return (
     <header className="site-header">
       <h2 className="site-header__title">Welcome!</h2>
       <nav className="site-header__nav" aria-label="Site">
-        <a className="pill pill--filled" href="/">
+        <button
+          type="button"
+          className={navPillClass(activePage === 'home')}
+          aria-current={activePage === 'home' ? 'page' : undefined}
+          onClick={() => onNavigate('home')}
+        >
           <HomeIcon />
           Home
-        </a>
-        <button type="button" className="pill pill--icon" aria-label="Profile">
+        </button>
+        <button
+          type="button"
+          className={navPillClass(activePage === 'profile', true)}
+          aria-label="Profile"
+          aria-current={activePage === 'profile' ? 'page' : undefined}
+          onClick={() => onNavigate('profile')}
+        >
           <UserIcon />
         </button>
-        <button type="button" className="pill pill--icon" aria-label="Favorites">
+        <button
+          type="button"
+          className={navPillClass(activePage === 'favorites', true)}
+          aria-label="Favorites"
+          aria-current={activePage === 'favorites' ? 'page' : undefined}
+          onClick={() => onNavigate('favorites')}
+        >
           <HeartIcon />
         </button>
       </nav>
