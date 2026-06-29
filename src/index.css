@@ -169,7 +169,7 @@ body {
   .bio-column {
     margin-top: 32px;
     width: 100%;
-    max-width: 100%;
+    min-width: 0;
   }
 
   @media (min-width: 1000px) {
@@ -177,22 +177,11 @@ body {
       position: sticky;
       top: var(--site-padding-top);
       align-self: start;
+      justify-self: stretch;
+      width: 100%;
       max-height: calc(100dvh - var(--site-padding-top));
       overflow-y: auto;
       margin-top: 0;
-      max-width: 231px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .bio-column {
-      max-width: 344px;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    .bio-column {
-      max-width: 403px;
     }
   }
 
@@ -254,6 +243,7 @@ body {
   /* ---------- Bio typography ---------- */
   .bio-title {
     margin: 0;
+    width: 100%;
     font-size: var(--text-title);
     font-weight: 700;
     line-height: normal;
@@ -262,6 +252,7 @@ body {
 
   .bio-body {
     margin: 16px 0 0;
+    width: 100%;
     font-size: var(--text-body);
     font-weight: 400;
     line-height: var(--leading-body);
@@ -270,6 +261,10 @@ body {
 
   .bio-body p {
     margin: 0;
+  }
+
+  .bio-copy {
+    width: 100%;
   }
 
   /* Per-breakpoint copy blocks (Figma 76:1672 / 76:1812 / 76:1811) */
@@ -328,6 +323,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    width: 100%;
     margin-top: 26px;
     font-size: var(--text-body);
     font-weight: 400;
@@ -335,6 +331,7 @@ body {
   }
 
   .bio-exp-list {
+    width: 100%;
     margin-top: 20px;
   }
 
@@ -370,6 +367,7 @@ body {
 
   /* ---------- Wave divider ---------- */
   .wave-wrap--bio {
+    width: 100%;
     margin-top: 26px;
     margin-bottom: 0;
     color: var(--color-cream);
