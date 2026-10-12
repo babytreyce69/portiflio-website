@@ -32,11 +32,17 @@ function TextLink({
 }
 
 const outsideLinks = [
-  { label: 'Teaches on Maven', href: 'https://maven.com/' },
-  { label: 'Writes on Substack', href: 'https://substack.com/' },
+  {
+    label: 'Teaches on Maven',
+    href: 'https://maven.com/p/016a24/designing-for-monetization',
+  },
+  {
+    label: 'Writes on Substack',
+    href: 'https://designingforneurodiversity.substack.com',
+  },
   {
     label: 'Speaks at conferences like Config',
-    href: 'https://config.figma.com/',
+    href: 'https://www.youtube.com/watch?v=3aH--S3r9n4',
   },
 ] as const
 
