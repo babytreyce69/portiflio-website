@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 type WorkCard = {
   id: string
   label: string
@@ -5,6 +7,7 @@ type WorkCard = {
   tone: 'blue' | 'purple' | 'green' | 'peach' | 'pink'
   wide?: boolean
   media?: 'image' | 'video'
+  poster?: string
 }
 
 const asset = (name: string) =>
@@ -15,6 +18,7 @@ const workCards: WorkCard[] = [
     id: 'mercury',
     label: 'Mercury Plus',
     src: asset('mercury.mp4'),
+    poster: asset('mercury-poster.png'),
     tone: 'blue',
     wide: true,
     media: 'video',
@@ -47,6 +51,41 @@ const workCards: WorkCard[] = [
   },
 ]
 
+function WorkVideo({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    el.muted = true
+    const play = () => {
+      void el.play().catch(() => {})
+    }
+    play()
+    el.addEventListener('loadeddata', play)
+    el.addEventListener('canplay', play)
+    return () => {
+      el.removeEventListener('loadeddata', play)
+      el.removeEventListener('canplay', play)
+    }
+  }, [src])
+
+  return (
+    <video
+      ref={ref}
+      className="work-card__media work-card__video"
+      src={src}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+    />
+  )
+}
+
 type CardColumnProps = {
   onOpen: () => void
 }
@@ -73,17 +112,9 @@ export default function CardColumn({ onOpen }: CardColumnProps) {
             onClick={onOpen}
           >
             {card.media === 'video' ? (
-              <video
-                className="work-card__image work-card__video"
-                src={card.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                aria-hidden="true"
-              />
+              <WorkVideo src={card.src} poster={card.poster} />
             ) : (
-              <img src={card.src} alt="" className="work-card__image" />
+              <img src={card.src} alt="" className="work-card__media" />
             )}
           </button>
         ))}
