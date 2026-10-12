@@ -4,6 +4,7 @@ type WorkCard = {
   src: string
   tone: 'blue' | 'purple' | 'green' | 'peach' | 'pink'
   wide?: boolean
+  media?: 'image' | 'video'
 }
 
 const asset = (name: string) =>
@@ -13,9 +14,10 @@ const workCards: WorkCard[] = [
   {
     id: 'mercury',
     label: 'Mercury Plus',
-    src: asset('mercury.gif'),
+    src: asset('mercury.mp4'),
     tone: 'blue',
     wide: true,
+    media: 'video',
   },
   {
     id: 'phones',
@@ -70,7 +72,19 @@ export default function CardColumn({ onOpen }: CardColumnProps) {
             aria-label={`Open ${card.label}`}
             onClick={onOpen}
           >
-            <img src={card.src} alt="" className="work-card__image" />
+            {card.media === 'video' ? (
+              <video
+                className="work-card__image work-card__video"
+                src={card.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-hidden="true"
+              />
+            ) : (
+              <img src={card.src} alt="" className="work-card__image" />
+            )}
           </button>
         ))}
       </div>

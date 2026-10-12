@@ -409,6 +409,10 @@ body {
     object-fit: contain;
   }
 
+  .work-card__video {
+    pointer-events: none;
+  }
+
   /* ---------- Page viewport ---------- */
   .page-viewport {
     grid-column: 1 / -1;
