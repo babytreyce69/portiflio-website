@@ -358,13 +358,17 @@ body {
   }
 
   .work-card--blue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 40px;
     background: var(--color-work-blue);
   }
 
   .work-card--blue .work-card__media {
-    object-fit: contain;
-    padding: 32px 40px;
-    box-sizing: border-box;
+    height: auto;
+    border-radius: var(--radius-card);
+    object-fit: cover;
   }
 
   .work-card--purple {
@@ -380,7 +384,13 @@ body {
   }
 
   .work-card--pink {
+    padding: 5.2% 5.2% 0;
     background: var(--color-work-pink);
+  }
+
+  .work-card--pink .work-card__media {
+    height: auto;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
   }
 
   .work-card:hover {

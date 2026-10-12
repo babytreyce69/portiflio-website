@@ -15,9 +15,11 @@ const workCards: WorkCard[] = [
   {
     id: 'mercury',
     label: 'Mercury Plus',
-    src: asset('mercury-banner.png'),
+    src: asset('mercury-plus.mp4'),
+    poster: asset('mercury-plus-poster.jpg'),
     tone: 'blue',
     wide: true,
+    media: 'video',
   },
   {
     id: 'phones',
