@@ -5,7 +5,6 @@ import PageTransition from './components/PageTransition'
 import PlaceholderModal from './components/PlaceholderModal'
 import PlaceholderPage from './components/PlaceholderPage'
 import SiteHeader from './components/SiteHeader'
-import WaveStrip from './components/WaveStrip'
 import { getSlideDirection, type Page } from './types/pages'
 
 function App() {
@@ -24,8 +23,8 @@ function App() {
       if (activePage === 'home') {
         return (
           <>
-            <CardColumn onOpen={() => setModalOpen(true)} />
             <BioColumn onOpen={() => setModalOpen(true)} />
+            <CardColumn onOpen={() => setModalOpen(true)} />
           </>
         )
       }
@@ -40,7 +39,6 @@ function App() {
       <main className="layout">
         <div className="layout__masthead">
           <SiteHeader activePage={page} onNavigate={navigate} />
-          <WaveStrip />
         </div>
 
         <PageTransition page={page} direction={direction} renderPage={renderPage} />

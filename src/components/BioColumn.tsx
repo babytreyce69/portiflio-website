@@ -1,12 +1,8 @@
-import WaveLine from './WaveLine'
+type BioColumnProps = {
+  onOpen: () => void
+}
 
-const experience = [
-  { company: 'Dropbox', years: '2021-2025' },
-  { company: 'OpenTable', years: '2021' },
-  { company: 'Life360', years: '2020' },
-] as const
-
-function Pill({
+function TextLink({
   children,
   href,
   onClick,
@@ -18,7 +14,7 @@ function Pill({
   if (href) {
     return (
       <a
-        className="pill"
+        className="text-link"
         href={href}
         target="_blank"
         rel="noopener noreferrer"
@@ -29,106 +25,73 @@ function Pill({
   }
 
   return (
-    <button type="button" className="pill" onClick={onClick}>
+    <button type="button" className="text-link" onClick={onClick}>
       {children}
     </button>
   )
 }
 
-type BioColumnProps = {
-  onOpen: () => void
-}
+const outsideLinks = [
+  { label: 'Teaches on Maven', href: 'https://maven.com/' },
+  { label: 'Writes on Substack', href: 'https://substack.com/' },
+  {
+    label: 'Speaks at conferences like Config',
+    href: 'https://config.figma.com/',
+  },
+] as const
 
 export default function BioColumn({ onOpen }: BioColumnProps) {
+  const avatarSrc = `${import.meta.env.BASE_URL}assets/avatar.png`
+
   return (
     <aside className="bio-column">
-      <h1 className="bio-title">Treyce Is a Growth Designer</h1>
+      <section className="panel">
+        <img
+          className="bio-avatar"
+          src={avatarSrc}
+          alt="Illustration of Treyce Meredith"
+          width={115}
+          height={115}
+        />
 
-      <div className="bio-body">
-        {/* 1000–1279 — flowing intro, mercury on one line */}
-        <div className="bio-copy bio-copy--pro">
-          <p>
-            You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it
-            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
-          </p>
-          <p className="bio-spacer" aria-hidden="true">
-            &nbsp;
-          </p>
-          <p>
-            Treyce has been doing growth design for 10 years Before it was even
-            really a thing (but it was).
-          </p>
-          <p className="bio-spacer" aria-hidden="true">
-            &nbsp;
-          </p>
-          <p>
-            Currently Treyce is a leading activation at{' '}
-            <Pill href="https://mercury.com/">Mercury</Pill>
-          </p>
-        </div>
-
-        {/* MacBook Air 1280 — single intro line, split mercury (Figma 76:1812 / 77:1632) */}
-        <div className="bio-copy bio-copy--air">
-          <p>
-            You pronounce it &ldquo;Trace&rdquo; Yes his parents spelled it
-            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
-          </p>
-          <p className="bio-spacer" aria-hidden="true">
-            &nbsp;
-          </p>
-          <p>
-            Treyce has been doing growth design for 10 years Before it was even
-            really a thing (but it was).
-          </p>
-          <p className="bio-spacer" aria-hidden="true">
-            &nbsp;
-          </p>
-          <p>Currently Treyce is a leading activation</p>
-          <p>
-            at <Pill href="https://mercury.com/">Mercury</Pill>
-          </p>
-        </div>
-
-        {/* Desktop 1440 — comma after Trace, flowing intro */}
-        <div className="bio-copy bio-copy--desktop">
-          <p>
-            You pronounce it &ldquo;Trace&rdquo;, Yes his parents spelled it
-            funny....It&rsquo;s a <Pill onClick={onOpen}>Long story</Pill>
-          </p>
-          <p className="bio-spacer" aria-hidden="true">
-            &nbsp;
-          </p>
-          <p>
-            Treyce has been doing growth design for 10 years Before it was even
-            really a thing (but it was).
-          </p>
-          <p className="bio-spacer" aria-hidden="true">
-            &nbsp;
-          </p>
-          <p>
-            Currently Treyce is a leading activation at{' '}
-            <Pill href="https://mercury.com/">Mercury</Pill>
-          </p>
-        </div>
-      </div>
-
-      <div className="wave-wrap wave-wrap--bio">
-        <WaveLine className="wave-line" />
-      </div>
-
-      <div className="bio-exp-header">
-        <span>Pervious Experience</span>
-        <Pill href="https://www.linkedin.com/in/treycemeredith">See more</Pill>
-      </div>
-
-      <div className="bio-exp-list">
-        {experience.map(({ company, years }) => (
-          <div key={company} className="exp-row">
-            <span className="bio-small">{company}</span>
-            <span className="bio-small bio-small--years">{years}</span>
+        <div className="bio-intro">
+          <h1 className="bio-title">Treyce Is a Growth Designer</h1>
+          <div className="bio-body">
+            <p>
+              You pronounce it &ldquo;Trace&rdquo;, Yes his parents spelled it
+              funny....It&rsquo;s a{' '}
+              <TextLink onClick={onOpen}>long story</TextLink>
+            </p>
+            <p className="bio-spacer" aria-hidden="true">
+              &nbsp;
+            </p>
+            <p>
+              Treyce has been growth designing for 10 years. He has worked
+              across the full customer lifecycle like Acquisition, Activation
+              and Monetization.
+            </p>
+            <p className="bio-spacer" aria-hidden="true">
+              &nbsp;
+            </p>
+            <p>
+              Currently Treyce is a leading activation at{' '}
+              <TextLink href="https://mercury.com/">Mercury</TextLink>, and hes
+              pretty happy doing it.
+            </p>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
+
+      <section className="panel">
+        <h2 className="bio-title">Outside of his 9-5 Treyce</h2>
+        <ul className="outside-list">
+          {outsideLinks.map(({ label, href }) => (
+            <li key={label}>
+              <TextLink href={href}>{label}</TextLink>
+            </li>
+          ))}
+        </ul>
+      </section>
     </aside>
   )
 }
