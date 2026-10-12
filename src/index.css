@@ -289,7 +289,12 @@ body {
   }
 
   .work-card--purple {
+    padding: 4.5% 2.8% 0;
     background: var(--color-work-purple);
+  }
+
+  .work-card--purple .work-card__media {
+    height: auto;
   }
 
   .work-card--green {
