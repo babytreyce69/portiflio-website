@@ -359,7 +359,12 @@ body {
 
   .work-card--blue {
     background: var(--color-work-blue);
-    aspect-ratio: 773 / 520;
+  }
+
+  .work-card--blue .work-card__media {
+    object-fit: contain;
+    padding: 32px 40px;
+    box-sizing: border-box;
   }
 
   .work-card--purple {

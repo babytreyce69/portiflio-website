@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react'
-
 type WorkCard = {
   id: string
   label: string
@@ -17,11 +15,9 @@ const workCards: WorkCard[] = [
   {
     id: 'mercury',
     label: 'Mercury Plus',
-    src: asset('mercury.mp4'),
-    poster: asset('mercury-poster.png'),
+    src: asset('mercury-banner.png'),
     tone: 'blue',
     wide: true,
-    media: 'video',
   },
   {
     id: 'phones',
@@ -51,41 +47,6 @@ const workCards: WorkCard[] = [
   },
 ]
 
-function WorkVideo({ src, poster }: { src: string; poster?: string }) {
-  const ref = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    el.muted = true
-    const play = () => {
-      void el.play().catch(() => {})
-    }
-    play()
-    el.addEventListener('loadeddata', play)
-    el.addEventListener('canplay', play)
-    return () => {
-      el.removeEventListener('loadeddata', play)
-      el.removeEventListener('canplay', play)
-    }
-  }, [src])
-
-  return (
-    <video
-      ref={ref}
-      className="work-card__media work-card__video"
-      src={src}
-      poster={poster}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      aria-hidden="true"
-    />
-  )
-}
-
 type CardColumnProps = {
   onOpen: () => void
 }
@@ -112,7 +73,17 @@ export default function CardColumn({ onOpen }: CardColumnProps) {
             onClick={onOpen}
           >
             {card.media === 'video' ? (
-              <WorkVideo src={card.src} poster={card.poster} />
+              <video
+                className="work-card__media work-card__video"
+                src={card.src}
+                poster={card.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden="true"
+              />
             ) : (
               <img src={card.src} alt="" className="work-card__media" />
             )}
