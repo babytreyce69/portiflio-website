@@ -13,7 +13,7 @@ const workCards: WorkCard[] = [
   {
     id: 'mercury',
     label: 'Mercury Plus',
-    src: asset('mercury-banner.png'),
+    src: asset('mercury.gif'),
     tone: 'blue',
     wide: true,
   },

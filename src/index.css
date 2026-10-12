@@ -233,6 +233,7 @@ body {
     height: 115px;
     border-radius: var(--radius-card);
     object-fit: cover;
+    image-rendering: auto;
   }
 
   .bio-intro {
