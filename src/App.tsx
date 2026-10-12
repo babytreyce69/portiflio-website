@@ -1,53 +1,16 @@
-import { useCallback, useState } from 'react'
 import BioColumn from './components/BioColumn'
 import CardColumn from './components/CardColumn'
-import PageTransition from './components/PageTransition'
-import PlaceholderModal from './components/PlaceholderModal'
-import PlaceholderPage from './components/PlaceholderPage'
-import SiteHeader from './components/SiteHeader'
-import { getSlideDirection, type Page } from './types/pages'
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [page, setPage] = useState<Page>('home')
-  const [direction, setDirection] = useState<'left' | 'right'>('right')
-
-  const navigate = useCallback((next: Page) => {
-    if (next === page) return
-    setDirection(getSlideDirection(page, next))
-    setPage(next)
-  }, [page])
-
-  const renderPage = useCallback(
-    (activePage: Page) => {
-      if (activePage === 'home') {
-        return (
-          <>
-            <BioColumn onOpen={() => setModalOpen(true)} />
-            <CardColumn onOpen={() => setModalOpen(true)} />
-          </>
-        )
-      }
-
-      return <PlaceholderPage page={activePage} />
-    },
-    [],
-  )
-
   return (
-    <>
-      <main className="layout">
-        <div className="layout__masthead">
-          <SiteHeader activePage={page} onNavigate={navigate} />
-        </div>
+    <main className="layout">
+      <header className="layout__masthead">
+        <h2 className="site-title">Welcome!</h2>
+      </header>
 
-        <PageTransition page={page} direction={direction} renderPage={renderPage} />
-      </main>
-
-      {modalOpen ? (
-        <PlaceholderModal onClose={() => setModalOpen(false)} />
-      ) : null}
-    </>
+      <BioColumn />
+      <CardColumn />
+    </main>
   )
 }
 

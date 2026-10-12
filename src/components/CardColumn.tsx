@@ -49,11 +49,7 @@ const workCards: WorkCard[] = [
   },
 ]
 
-type CardColumnProps = {
-  onOpen: () => void
-}
-
-export default function CardColumn({ onOpen }: CardColumnProps) {
+export default function CardColumn() {
   return (
     <section className="work-column">
       <div className="work-header">
@@ -65,14 +61,11 @@ export default function CardColumn({ onOpen }: CardColumnProps) {
 
       <div className="work-grid">
         {workCards.map((card) => (
-          <button
+          <div
             key={card.id}
-            type="button"
             className={`work-card work-card--${card.tone}${
               card.wide ? ' work-card--wide' : ''
             }`}
-            aria-label={`Open ${card.label}`}
-            onClick={onOpen}
           >
             {card.media === 'video' ? (
               <video
@@ -84,12 +77,16 @@ export default function CardColumn({ onOpen }: CardColumnProps) {
                 loop
                 playsInline
                 preload="auto"
-                aria-hidden="true"
+                aria-label={card.label}
               />
             ) : (
-              <img src={card.src} alt="" className="work-card__media" />
+              <img
+                src={card.src}
+                alt={card.label}
+                className="work-card__media"
+              />
             )}
-          </button>
+          </div>
         ))}
       </div>
     </section>

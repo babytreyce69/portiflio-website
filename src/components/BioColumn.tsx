@@ -1,33 +1,19 @@
-type BioColumnProps = {
-  onOpen: () => void
-}
-
 function TextLink({
   children,
   href,
-  onClick,
 }: {
   children: React.ReactNode
-  href?: string
-  onClick?: () => void
+  href: string
 }) {
-  if (href) {
-    return (
-      <a
-        className="text-link"
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    )
-  }
-
   return (
-    <button type="button" className="text-link" onClick={onClick}>
+    <a
+      className="text-link"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
-    </button>
+    </a>
   )
 }
 
@@ -46,7 +32,7 @@ const outsideLinks = [
   },
 ] as const
 
-export default function BioColumn({ onOpen }: BioColumnProps) {
+export default function BioColumn() {
   const avatarSrc = `${import.meta.env.BASE_URL}assets/avatar.png`
 
   return (
@@ -65,8 +51,7 @@ export default function BioColumn({ onOpen }: BioColumnProps) {
           <div className="bio-body">
             <p>
               You pronounce it &ldquo;Trace&rdquo;, Yes his parents spelled it
-              funny....It&rsquo;s a{' '}
-              <TextLink onClick={onOpen}>long story</TextLink>
+              funny....It&rsquo;s a long story
             </p>
             <p className="bio-spacer" aria-hidden="true">
               &nbsp;
